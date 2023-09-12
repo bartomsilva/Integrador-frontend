@@ -18,7 +18,7 @@ export const Title = styled.h1`
   color: #373737;
 `;
 
-export const LoginHeader = styled.div`
+export const SingupHeader = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,12 +40,18 @@ export const ContainerInput = styled.div`
   border-radius: 4;
 `;
 
+export const ContainerText = styled.div`
+  width: 100;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 4;
+`;
 export const ContainerButtons = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;  
-  gap: 20px
 `;
 
 export const Line  = styled.div`
@@ -79,29 +85,22 @@ export const Button = styled.button`
   border-radius: 27px;
   /* padrão */
   transition: 0.3s ease;
-  border: 1px solid #FE7E02;
-  color: #FE7E02;
   font-family: Noto Sans;
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
   letter-spacing: 0em;
   text-align: center;
+  
+  background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
+  border: none;
+  color: #ffffff;
+  transition: 0.3s ease;
   &:hover {
-    color: #fff;
-    background-color: rgba(254,126,2,0.8);
+    background: linear-gradient(90deg, #F9B24E 0%,  #FF6489 100%);
+    color: rgba(0,0,0,0.6);
   }
-  /*botão continuar  */
-  &:nth-child(1){
-    background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
-    border: none;
-    color: #ffffff;
-    transition: 0.3s ease;
-    &:hover {
-      background: linear-gradient(90deg, #F9B24E 0%,  #FF6489 100%);
-      color: rgba(0,0,0,0.6);
-    }
-  }  
+
  `;
 
 
