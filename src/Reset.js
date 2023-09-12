@@ -7,6 +7,10 @@ const Reset = createGlobalStyle`
 		box-sizing: border-box;
 	};
 	
+    /* body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    } */
 	textarea:focus, input:focus {
     	box-shadow: 0 0 0 0;
     	outline: 0;
