@@ -1,20 +1,27 @@
 import { styled } from "styled-components";
 
+export const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
 export const WrapperSingup = styled.div`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
   max-width: 428px;
   min-height: 100vh;
+  padding: 40px 32px;
 `;
 
 export const Title = styled.h1`
   font-family: IBM Plex Sans;
-  font-size: 36px;
+  font-size: 33px;
   font-weight: 700;
-  line-height: 47px;
+  line-height: 43px;
   letter-spacing: 0em;
   text-align: left;
+
   color: #373737;
 `;
 
@@ -40,13 +47,43 @@ export const ContainerInput = styled.div`
   border-radius: 4;
 `;
 
-export const ContainerText = styled.div`
+export const ContainerTerms = styled.div`
   width: 100;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
   border-radius: 4;
+ `;
+
+export const AlertTerms = styled.div`
+`
+
+export const AcceptTerms = styled.div`
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Noto Sans;
+    font-weight: 400;
+  input {
+    width: 23px;
+    height: 23px;
+  }
 `;
+
+export const TextTerms = styled.p`
+  font-family: Noto Sans;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+`;
+
+export const TextBlue=styled.span`
+  color: #4088CB
+`;
+
 export const ContainerButtons = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,12 +105,16 @@ export const Input = styled.input`
   padding-inline: 5px;
   border-color: rgba(0,0,0,0.2);
   border-radius: 4px;
+  transition: 0.3s ease;
   
-  &:hover {
-    border-color: #8B08F7; 
-  }
   &:focus {
-    border-color: #B368F1; 
+    border-width: 2.8px;
+    border-color: #9747ff;   
+  }
+
+  &:hover {
+    border-width: 4.5px;
+    border-color: #9747ff;  
   }
 `;
 
