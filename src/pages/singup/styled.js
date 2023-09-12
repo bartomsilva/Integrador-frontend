@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const WrapperLogin = styled.div`
+export const WrapperSingup = styled.div`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
