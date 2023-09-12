@@ -1,24 +1,27 @@
-import { WrapperLogin } from "./styled";
+import { Button, ContainerButtons, ContainerInput, Input, Line, LoginHeader, Title, WrapperLogin } from "./styled";
 
 export default function LoginPage() {
 
   return (
     <WrapperLogin>
-      <img src="/image/logoBig.svg" alt="" />
-      <p>O projeto de rede social da Labenu</p>
 
-      <input type="text" placeholder="E-mail" />
-      
-      <br/>
-      
-      <input type="text" placeholder="Senha" />
+      <LoginHeader>
+        <img src="/image/logoBig.svg" alt="" />
+        <Title>LabEddit</Title>
+        <p>O projeto de rede social da Labenu</p>
+      </LoginHeader>
 
-      <br/>
+      <ContainerInput>
+        <Input type="text" placeholder="E-mail" />
+        <Input type="text" placeholder="Senha" />
+      </ContainerInput>
 
-      <button>Continuar</button>
-      <br/>
-      <button>Criar uma conta!</button>
-      
+      <ContainerButtons>
+        <Button>Continuar</Button>
+        <Line></Line>
+        <Button>Criar uma conta!</Button>
+      </ContainerButtons>
+
     </WrapperLogin>
   )
 
