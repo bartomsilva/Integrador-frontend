@@ -1,7 +1,6 @@
 import './App.css';
-import Header from './components/header/Header';
-import LoginPage from './pages/login/loginPage';
 import { styled } from "styled-components";
+import { Router } from './router/Router';
 
 const Labeddit = styled.div`
 width: 100vw;
@@ -12,7 +11,7 @@ align-items: center;
 function App() {
     return (
         <Labeddit>
-            <LoginPage />
+            <Router />
         </Labeddit>
     );
 }

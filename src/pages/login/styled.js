@@ -62,12 +62,17 @@ export const Input = styled.input`
   padding-inline: 5px;
   border-color: rgba(0,0,0,0.2);
   border-radius: 4px;
+  transition: 0.3s ease;
+
   
-  &:hover {
-    border-color: #8B08F7; 
-  }
   &:focus {
-    border-color: #B368F1; 
+    border-width: 2.8px;
+    border-color: #9747ff;   
+  }
+
+  &:hover {
+    border-width: 4.5px;
+    border-color: #9747ff;  
   }
 `;
 

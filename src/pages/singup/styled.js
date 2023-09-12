@@ -1,24 +1,31 @@
 import { styled } from "styled-components";
 
+export const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
 export const WrapperSingup = styled.div`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
   max-width: 428px;
   min-height: 100vh;
+  padding: 40px 32px;
 `;
 
 export const Title = styled.h1`
   font-family: IBM Plex Sans;
-  font-size: 36px;
+  font-size: 33px;
   font-weight: 700;
-  line-height: 47px;
+  line-height: 43px;
   letter-spacing: 0em;
   text-align: left;
+
   color: #373737;
 `;
 
-export const LoginHeader = styled.div`
+export const SingupHeader = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,12 +47,48 @@ export const ContainerInput = styled.div`
   border-radius: 4;
 `;
 
+export const ContainerTerms = styled.div`
+  width: 100;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  border-radius: 4;
+ `;
+
+export const AlertTerms = styled.div`
+`
+
+export const AcceptTerms = styled.div`
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Noto Sans;
+    font-weight: 400;
+  input {
+    width: 23px;
+    height: 23px;
+  }
+`;
+
+export const TextTerms = styled.p`
+  font-family: Noto Sans;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+`;
+
+export const TextBlue=styled.span`
+  color: #4088CB
+`;
+
 export const ContainerButtons = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;  
-  gap: 20px
 `;
 
 export const Line  = styled.div`
@@ -62,12 +105,16 @@ export const Input = styled.input`
   padding-inline: 5px;
   border-color: rgba(0,0,0,0.2);
   border-radius: 4px;
+  transition: 0.3s ease;
   
-  &:hover {
-    border-color: #8B08F7; 
-  }
   &:focus {
-    border-color: #B368F1; 
+    border-width: 2.8px;
+    border-color: #9747ff;   
+  }
+
+  &:hover {
+    border-width: 4.5px;
+    border-color: #9747ff;  
   }
 `;
 
@@ -79,29 +126,22 @@ export const Button = styled.button`
   border-radius: 27px;
   /* padrão */
   transition: 0.3s ease;
-  border: 1px solid #FE7E02;
-  color: #FE7E02;
   font-family: Noto Sans;
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
   letter-spacing: 0em;
   text-align: center;
+  
+  background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
+  border: none;
+  color: #ffffff;
+  transition: 0.3s ease;
   &:hover {
-    color: #fff;
-    background-color: rgba(254,126,2,0.8);
+    background: linear-gradient(90deg, #F9B24E 0%,  #FF6489 100%);
+    color: rgba(0,0,0,0.6);
   }
-  /*botão continuar  */
-  &:nth-child(1){
-    background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
-    border: none;
-    color: #ffffff;
-    transition: 0.3s ease;
-    &:hover {
-      background: linear-gradient(90deg, #F9B24E 0%,  #FF6489 100%);
-      color: rgba(0,0,0,0.6);
-    }
-  }  
+
  `;
 
 

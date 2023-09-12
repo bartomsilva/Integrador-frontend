@@ -32,7 +32,7 @@ export const Button = styled.button`
 
 export function PageNotFound(){
 
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   return(
     <Container>
