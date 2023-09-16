@@ -1,4 +1,5 @@
-import { Button, ContainerButtons, ContainerInput, Input, Line, LoginHeader, Title, WrapperLogin } from "./styled";
+import { Button, ContainerButtons, ContainerInput, Input, 
+  Line, LoginHeader, Title, WrapperLogin } from "./styled";
 
 export default function LoginPage() {
 
