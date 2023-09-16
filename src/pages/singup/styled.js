@@ -9,7 +9,7 @@ export const WrapperSingup = styled.div`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
-  max-width: 428px;
+  width: 428px;
   min-height: 100vh;
   padding: 40px 32px;
 `;

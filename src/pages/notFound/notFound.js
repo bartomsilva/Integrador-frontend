@@ -36,9 +36,9 @@ export function PageNotFound(){
 
   return(
     <Container>
-      {/* <h1>Oi!!!!</h1> */}
-      <img src={'/image/404-error-page.png'} alt="image pagenotfound" />
-      <h2>Está página não existe,</h2>
+      <h1>404</h1>
+      <br/>
+      <h2>Está página não existe!</h2>
       {/* <Button onClick={()=>gotoHome(navigate)}>voltar para página principal!</Button> */}
     </Container>
   )

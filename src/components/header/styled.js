@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const WrapperHeader = styled.div`
   display: flex;
-  max-width: 428px;
+  width: 100%;
   height: 50px;
   justify-content: space-between;
   align-items: center;
