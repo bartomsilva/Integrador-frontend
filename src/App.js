@@ -8,12 +8,12 @@ display: flex;
 justify-content: center;
 align-items: center;
 `
-function App() {
+
+export default function App() {
+
     return (
         <Labeddit>
             <Router />
         </Labeddit>
     );
 }
-
-export default App;

@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
+import { Line } from "../../pages/login/styled";
 
 export const WrapperMessage = styled.div`
   display: flex;
   max-width: 365px;
-  height: 204px;
+  height: fit-content;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background-color: #FFFFFF;
+  margin-bottom: 18px;
 `;
 
 export const ContainerMessage = styled.div`
@@ -33,6 +35,7 @@ export const ButtonMessage = styled.div`
   letter-spacing: 0em;
   color: #FFFFFF;
   text-align: center;
+  margin-bottom: 15px;
 `;
 
 export const TextArea = styled.textarea`
@@ -61,7 +64,9 @@ export default function TypeMessage() {
         Postar
       </ButtonMessage>
 
+      <Line></Line>
+
     </WrapperMessage>
-    
+
   )
 }
