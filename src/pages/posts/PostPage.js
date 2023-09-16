@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { styled } from "styled-components";
+import TypeMessage from "../../components/cards/TypeMessage";
+import Header from "../../components/header/Header";
 
 export const WrapperPost = styled.div`
   display: flex;
   flex-direction: column; 
-  justify-content: space-around;
-  max-width: 428px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 428px;
   min-height: 100vh;
+
+  border: 1px dotted red;
 `;
 export const ContainerPost = styled.div`
   max-width: 400px;
@@ -73,7 +78,8 @@ export default function PostPage() {
 
   return (
     <WrapperPost>
-      <h1>Posts</h1>
+      <Header/>
+      <TypeMessage/>
       {
         posts?.map(post => renderData(post)
         )
