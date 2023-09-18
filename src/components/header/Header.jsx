@@ -3,6 +3,7 @@ import { LabedditContext } from "../../global/LabedditContext"
 import { Button, ContainerButton, HeaderLogo, WrapperHeader } from "./styled"
 
 import { styled } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const ContainerUser = styled.div`
   padding-left: 15px;
@@ -16,7 +17,9 @@ const ContainerUser = styled.div`
 
 export default function Header() {
   const context = useContext(LabedditContext)
-  const {flow } = context
+  const {flow, logout } = context
+
+  const navigate = useNavigate()
 
   return (
     <WrapperHeader>
@@ -27,8 +30,13 @@ export default function Header() {
         <img src="image/logoSmall.svg" alt="logo header" />
       </HeaderLogo>
 
-      <ContainerButton>        
-        <Button>{flow=="login"?"Login":"Logout"}</Button>
+      <ContainerButton>  
+        {
+          flow==="login"? 
+            <Button onClick={()=>navigate("/")}>Login</Button>
+          :
+            <Button onClick={()=>logout()}>Logout</Button>
+        }      
       </ContainerButton>
 
     </WrapperHeader>

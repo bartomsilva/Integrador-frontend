@@ -1,4 +1,3 @@
-import './App.css';
 import { styled } from "styled-components";
 import { Router } from './router/Router';
 
@@ -8,7 +7,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 `
-
 export default function App() {
 
     return (

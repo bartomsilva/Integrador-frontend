@@ -10,9 +10,15 @@ export default function LabedditProvider({ children }) {
   // usuário logado
   const [userLoged, setUserLoged] = useState("")
 
+  // efetua o logof do usuário
+  const logout = () => {
+    localStorage.removeItem("token")
+  }
+
   const context = {    
     flow,
-    setFlow
+    setFlow,
+    logout
   }
   
   return (
