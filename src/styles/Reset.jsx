@@ -1,27 +1,25 @@
 import { createGlobalStyle } from "styled-components";
 
 const Reset = createGlobalStyle` 
-	*{
+	
+    *{
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
 	};
 	
-    /* body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-    } */
+   
 	textarea:focus, input:focus {
     	box-shadow: 0 0 0 0;
     	outline: 0;
 	}
 	
-	  *,
+	*,
     *:before,
     *:after {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
     }
 
     html,

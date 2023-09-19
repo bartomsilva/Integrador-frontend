@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { styled } from "styled-components";
 import axios from "axios";
-import TypeMessage from "../../components/cards/TypeMessage";
-import Header from "../../components/header/Header";
-import CardMessage from "../../components/cards/CardMessage";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { styled } from "styled-components";
+import { BASE_URL } from "../../constants/constants";
+import TypeMessage from "../../components/Cards/typeMessage";
+import Header from "../../components/Header/header";
+import CardMessage from "../../components/Cards/cardMessage";
+import { LabedditContext } from "../../global/labedditContext";
 
 export const WrapperPost = styled.div`
   display: flex;
@@ -12,46 +15,40 @@ export const WrapperPost = styled.div`
   align-items: center;
   width: 428px;
   min-height: 100vh;
-  border: 1px dotted red;
 `;
-
 
 export default function PostPage() {
 
-  const BASE_URL = "http://127.0.0.1:3003/posts"
-  const AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDJhMWZhLTkzM2EtNDdkZS05MmVhLWRjMzA0YmVjOGNhMyIsIm5hbWUiOiJiYXJ0MTAwIiwicm9sZSI6Ik5PUk1BTCIsImlhdCI6MTY5NDkwMzM3NywiZXhwIjoxNjk1NTA4MTc3fQ.5v_RS4C4WjFTsgNfeH3BZj8hW5DzWLrsn4-O5FUQMn0"
-
+  const navigate = useNavigate()
+  const context = useContext(LabedditContext)
   const [posts, setPosts] = useState()
 
+  // carrega os posts
   useEffect(() => {
     getPosts();
   }, []);
-
+  
+ 
   const getPosts = async () => {
+    const token = context.getToken()
     try {
       const res =
         await axios
-          .get(BASE_URL, {
+          .get(BASE_URL + "/posts", {
             headers: {
-              Authorization: AUTH_TOKEN,
-            },
-          }
-          )
+              Authorization: token
+            }
+          })
       setPosts(res.data);
-    } catch (error) {
-      console.log(error.response);
-    }
+    } catch (error) { }
   };
-
-  console.log(posts)
 
   return (
     <WrapperPost>
-      <Header/>
-      <TypeMessage/>
+      <Header />
+      <TypeMessage />
       {
-        posts?.map(post => CardMessage(post)
-        )
+        posts?.map(post => CardMessage(post,context,posts,setPosts))       
       }
     </WrapperPost>
   )

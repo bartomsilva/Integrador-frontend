@@ -5,6 +5,7 @@ import {
   Button, ContainerButtons, ContainerInput, Input,
   Line, LoginHeader, Title, WrapperLogin
 } from "./styled";
+
 import { useForm } from "../../hooks/useForm";
 
 export default function LoginPage() {
@@ -12,26 +13,23 @@ export default function LoginPage() {
   const navigate = useNavigate()
   const [form, onChange, resetForm] =
     useForm({ email: "", password: "" })
-
   const context = useContext(LabedditContext)
   const { setFlow } = context
 
-  const sendFormLogin = (e) => {
+  const sendFormLogin = async (e) => {
     e.preventDefault()
     resetForm()
+    await context.userLogin(form)    
+    const response = context.getToken()
 
-    // aqui fazer enviar solicitação para api
-    // o resultado de response vai ser de acordo com 
-    // a resposta
-    const response = true
     if (response) {
       setFlow("posts")
       navigate("/posts")
     }
-
   }
 
   return (
+        
     <WrapperLogin onSubmit={sendFormLogin}>
 
       <LoginHeader>

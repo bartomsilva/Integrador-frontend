@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Reset from './styles/Reset';
+import Reset from './styles/reset';
+
 import App from './App';
 import LabedditProvider from './global/LabedditContext';
-import { BrowserRouter } from 'react-router-dom';
+import Global from './styles/global';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <LabedditProvider>
-    <BrowserRouter>
+      <Global />
       <Reset />
       <App />
-    </BrowserRouter>
   </LabedditProvider>
 );
 

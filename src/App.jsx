@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
+import { Router } from './router/router';
 import { styled } from "styled-components";
-import { Router } from './router/Router';
+
 
 const Labeddit = styled.div`
 width: 100vw;

@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Line } from "../../pages/login/styled";
+import { Line } from "../../pages/Login/styled";
 
 export const WrapperMessage = styled.div`
   display: flex;
