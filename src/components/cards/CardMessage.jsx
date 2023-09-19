@@ -3,11 +3,11 @@ import { styled } from "styled-components";
 export const ContainerMessage = styled.div`
   width: 364px;
   min-height: fit-content;
-  background: #f9f9f9;
+  background: #f8f1f1;
   padding: 15px;
   border-radius: 12px;
   margin-bottom: 15px;
-  border: 1px solid #E0E0E0
+  border: 1.2px dotted #c4c0c0;
 `;
 
 export const TextUserCreator = styled.p`
@@ -47,8 +47,6 @@ export const ContainerButtonLiked = styled.div`
   height: 28px;
   border-radius: 28px;
   border: 1px solid rgba(0,0,0,0.12);
-  padding: 5px 0;
-  
 `;
 
 export const ContainerButtonComment = styled(ContainerButtonLiked)`
@@ -64,26 +62,24 @@ export const ButtonLike = styled.button`
   background-image: url(/image/like.svg);
   background-repeat: no-repeat;
   background-position: center;
-  /* filter: invert(56%) sepia(75%) saturate(2848%) 
-          hue-rotate(358deg) brightness(99%) contrast(89%); */
-  
-  ${({ applyFilter }) =>
-    applyFilter &&
+  padding: 5px 5px;
+
+  &:hover{
+    cursor: pointer;
+  }
+  ${({ applyfilter }) => applyfilter &&
     `
       filter: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
-    `}
-`; 
+    `} 
+`;
 
 export const ButtonDislike = styled(ButtonLike)`
   background-image: url(/image/dislike.svg);
-  /* filter: invert(86%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%); */
-  ${({ applyFilter }) =>
-    applyFilter &&
+  ${({ applyfilter }) => applyfilter &&
     `
       filter: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
-    `}
+    `}  
 `;
-
 
 export const ButtonComment = styled.button`
   width: 19.72px;
@@ -92,6 +88,10 @@ export const ButtonComment = styled.button`
   background-color: transparent;
   background-repeat: no-repeat;
   background-image: url(/image/comments.svg);
+  padding: 5px 5px;
+  &:hover{
+    cursor: pointer;
+  }  
 `;
 
 export const Score = styled.p`
@@ -102,10 +102,62 @@ export const Score = styled.p`
   letter-spacing: 0em;
   text-align: center; 
   color: #6F6F6F;
- 
+  margin: 0px 3px; 
 `;
 
-export default function CardMessage(post) {
+export default function CardMessage(post, context, posts, setPosts) {
+
+  // atualiza o status do like na tela
+  const updateStatusLike = (post, action) => {
+    const postId = post?.id ? post.id : null
+    const statusLiked = post?.liked ? post.liked : null
+    let newLikes = post?.likes ? post.likes : 0
+    let newDislikes = post?.disklikes ? post.dislikes: 0
+
+    if (!postId) return
+
+    let newLiked
+    
+    if (statusLiked === action) {
+      newLiked = "no"
+      if (statusLiked === "like") {
+        newLikes --
+      } else {
+        newDislikes--
+      }
+    
+    } else if (statusLiked === "like") {
+      newLiked = "dislike"
+      newLikes --
+      newDislikes ++
+    
+    } else if (statusLiked === "dislike") {
+      newLiked = "like"
+      newLikes ++
+      newDislikes --
+    } else {
+      console.log(statusLiked,'-',action)
+      newLiked = action
+      if (action === "like") {
+        newLikes ++
+      } else {
+        newDislikes ++
+      }
+    }
+
+    console.log("newl",newLikes)
+    console.log("newdl",newDislikes)
+
+    const updatedPosts = posts.map(post => {
+      if (post.id === postId) {
+        return { ...post, liked: newLiked,
+          likes: newLikes, 
+          dislikes: newDislikes };
+      }
+      return post;
+    });
+    setPosts(updatedPosts);
+  }
 
   return (
     <ContainerMessage key={post.id}>
@@ -117,31 +169,37 @@ export default function CardMessage(post) {
       </MessageContent>
 
       <MessageStatus>
-        
+
         <ContainerButtonLiked>
-        
-          <ButtonLike applyFilter={post?.liked==="like"?true:false}>
 
+          <ButtonLike
+            onClick={() => {
+              context.makeLike(post.id, "posts", true)
+              updateStatusLike(post, "like")
+            }}
+            applyfilter={post.liked === "like" ? "true" : null}>
           </ButtonLike>
-        
-          <Score>{+post.likes - +post.dislikes}</Score>
-        
-          <ButtonDislike applyFilter={post?.liked==="dislike"?true:false}>
 
+          <Score>{post.likes - post.dislikes}</Score>
+
+          <ButtonDislike
+            onClick={() => {
+              context.makeLike(post.id, "posts", false)
+              updateStatusLike(post, "dislike")
+            }}
+            applyfilter={post.liked === "dislike" ? "true" : null}>
           </ButtonDislike>
-        
+
         </ContainerButtonLiked>
 
         <ContainerButtonComment>
           <ButtonComment>
             <svg src="/image/comments.svg" alt="" />
           </ButtonComment>
-          <Score>{post.comments>0?post.comments:0}</Score>
+          <Score>{post.comments > 0 ? post.comments : 0}</Score>
         </ContainerButtonComment>
 
       </MessageStatus>
-
-      {/* <p>liked {post.liked}</p> */}
 
     </ContainerMessage>
   )

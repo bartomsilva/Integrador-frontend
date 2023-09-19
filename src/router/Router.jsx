@@ -1,17 +1,33 @@
-import { Routes, Route } from "react-router-dom";
-import { PageNotFound } from "../pages/notFound/notFound";
-import LoginPage from "../pages/login/loginPage";
-import SingupPage from "../pages/singup/SingupPage";
-import PostPage from "../pages/posts/PostPage";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
+import { PageNotFound } from "../pages/NotFound/notFound";
+import LoginPage from "../pages/Login/loginPage";
+import SingupPage from "../pages/Singup/singupPage";
+import PostPage from "../pages/Posts/postPage";
+import { useContext } from "react";
+import { LabedditContext } from "../global/labedditContext";
 
 export function Router() {
-    return (
 
-        <Routes>
-            <Route path='/' element={<LoginPage />} />
-            <Route path='/singup' element={<SingupPage />} />
-            <Route path='/posts' element={<PostPage />} />
-            <Route path="*" element={<PageNotFound />} />
-        </Routes>
+    const context =useContext(LabedditContext)
+
+    function ProtectedRoute({ children, redirectTo }) {
+        const token = localStorage.getItem('token') !== null
+        const loged = context.userLoged !=null
+        return (token && loged) ? children : <Navigate to={redirectTo} />
+    }
+
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<LoginPage />} />
+                <Route path='/singup' element={<SingupPage />} />
+                <Route path={"/posts"} element={
+                    <ProtectedRoute redirectTo={'/'}>
+                        <PostPage />
+                    </ProtectedRoute>} />
+                <Route path="*" element={<PageNotFound />} />
+            </Routes>
+        </BrowserRouter>
+
     )
 }

@@ -1,4 +1,4 @@
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/header";
 import {
   AcceptTerms, AlertTerms, Button, ContainerButtons, ContainerInput,
   ContainerTerms, Input, MainContainer, SingupHeader, TextBlue,
