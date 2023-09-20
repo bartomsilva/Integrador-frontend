@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { Button, ContainerButton, HeaderLogo, WrapperHeader } from "./styled"
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { LabedditContext } from "../../global/labedditContext";
+import { LabedditContext } from "../../global/LabedditContext";
 
 const ContainerUser = styled.div`
   padding-left: 15px;
@@ -23,8 +23,7 @@ export default function Header() {
   return (
     <WrapperHeader>
       <ContainerUser>
-        <p>{userLoged.userName}</p>       
-
+        <p>{userLoged?.userName}</p>      
       </ContainerUser>
       <HeaderLogo>
         <img src="image/logoSmall.svg" alt="logo header" />
