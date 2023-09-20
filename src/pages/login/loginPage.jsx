@@ -16,6 +16,8 @@ export default function LoginPage() {
   const context = useContext(LabedditContext)
   const { setFlow } = context
 
+  context.resetToken()
+
   const sendFormLogin = async (e) => {
     e.preventDefault()
     resetForm()

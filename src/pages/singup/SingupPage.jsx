@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { LabedditContext } from "../../global/LabedditContext";
 import { useNavigate } from "react-router-dom";
-import Header from "../../components/Header/header";
+import Header from "../../components/header/Header";
 import {
   AcceptTerms, AlertTerms, Button, ContainerButtons, ContainerInput,
   ContainerTerms, Input, MainContainer, SingupHeader, TextBlue,

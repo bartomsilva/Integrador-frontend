@@ -42,21 +42,24 @@ export default function LabedditProvider({ children }) {
         setUserLoged(response.data.user)
       })
       .catch(error => {
-        if (error.response) {    
+        if (error.response) {  
+          console.log(error)  
           const msgError = error.response.data.message
           swal("Dados inválidos", msgError, "error")
         } else {
           swal("Sistema indisponível", "tente mais tarde", "error")
         }
-      })
-    
-      
+      })      
+  }
 
+  // paga o token
+  const resetToken = () => {
+    localStorage.removeItem("token")
   }
 
   // efetua o logof do usuário
   const logout = (navigate) => {
-    localStorage.removeItem("token")
+    resetToken()
     handleHome(navigate)
     setUserLoged(null)
   }
@@ -131,7 +134,8 @@ export default function LabedditProvider({ children }) {
     getToken,
     userLoged,
     sendLike,
-    sendPost
+    sendPost,
+    resetToken
 
   }
 
