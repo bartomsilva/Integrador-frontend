@@ -109,50 +109,48 @@ export default function CardMessage(post, context, posts, setPosts) {
 
   // atualiza o status do like na tela
   const updateStatusLike = (post, action) => {
-    const postId = post?.id ? post.id : null
-    const statusLiked = post?.liked ? post.liked : null
-    let newLikes = post?.likes ? post.likes : 0
-    let newDislikes = post?.disklikes ? post.dislikes: 0
+    const postId = post.id ? post.id : no
+    const statusLiked = post.liked ? post.liked : no
+    let newLikes = post.likes ? post.likes : 0
+    let newDislikes = post.dislikes ? post.dislikes : 0
 
     if (!postId) return
 
     let newLiked
-    
-    if (statusLiked === action) {
+
+    // sem atividade
+    if (statusLiked == "no") {
+      newLiked = action
+      if (action === "like") {
+        newLikes++
+      } else {
+        newDislikes++
+      }
+      // remove o like
+    } else if (statusLiked === action) {
       newLiked = "no"
       if (statusLiked === "like") {
-        newLikes --
+        newLikes--
       } else {
         newDislikes--
       }
-    
-    } else if (statusLiked === "like") {
-      newLiked = "dislike"
-      newLikes --
-      newDislikes ++
-    
     } else if (statusLiked === "dislike") {
       newLiked = "like"
-      newLikes ++
-      newDislikes --
+      newLikes++
+      newDislikes--
     } else {
-      console.log(statusLiked,'-',action)
-      newLiked = action
-      if (action === "like") {
-        newLikes ++
-      } else {
-        newDislikes ++
-      }
+      newLiked = "dislike"
+      newLikes--
+      newDislikes++
     }
 
-    console.log("newl",newLikes)
-    console.log("newdl",newDislikes)
-
-    const updatedPosts = posts.map(post => {
+    const updatedPosts = posts.map((post) => {
       if (post.id === postId) {
-        return { ...post, liked: newLiked,
-          likes: newLikes, 
-          dislikes: newDislikes };
+        return {
+          ...post, liked: newLiked,
+          likes: newLikes,
+          dislikes: newDislikes
+        };
       }
       return post;
     });
@@ -174,17 +172,17 @@ export default function CardMessage(post, context, posts, setPosts) {
 
           <ButtonLike
             onClick={() => {
-              context.makeLike(post.id, "posts", true)
+              context.sendLike(post.id, "posts", true)
               updateStatusLike(post, "like")
             }}
             applyfilter={post.liked === "like" ? "true" : null}>
           </ButtonLike>
 
-          <Score>{post.likes - post.dislikes}</Score>
+          <Score>{post?.likes}</Score>
 
           <ButtonDislike
             onClick={() => {
-              context.makeLike(post.id, "posts", false)
+              context.sendLike(post.id, "posts", false)
               updateStatusLike(post, "dislike")
             }}
             applyfilter={post.liked === "dislike" ? "true" : null}>

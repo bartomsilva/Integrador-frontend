@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const MainContainer = styled.main`
+export const MainContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11,7 +11,7 @@ export const WrapperSingup = styled.div`
   justify-content: space-around;
   width: 428px;
   min-height: 100vh;
-  padding: 40px 32px;
+  padding: 60px 32px;
 `;
 
 export const Title = styled.h1`
@@ -21,7 +21,6 @@ export const Title = styled.h1`
   line-height: 43px;
   letter-spacing: 0em;
   text-align: left;
-
   color: #373737;
 `;
 

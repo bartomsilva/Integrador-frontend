@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { BASE_URL } from "../../constants/constants";
-import TypeMessage from "../../components/Cards/typeMessage";
+import TypeMessage from "../../components/Cards/TypeMessage";
 import Header from "../../components/Header/header";
 import CardMessage from "../../components/Cards/cardMessage";
-import { LabedditContext } from "../../global/labedditContext";
+import { LabedditContext } from "../../global/LabedditContext";
 
 export const WrapperPost = styled.div`
   display: flex;
@@ -26,9 +26,9 @@ export default function PostPage() {
   // carrega os posts
   useEffect(() => {
     getPosts();
-  }, []);
+    context.setFlow("posts")
+  }, [context.flow]);
   
- 
   const getPosts = async () => {
     const token = context.getToken()
     try {
@@ -46,7 +46,7 @@ export default function PostPage() {
   return (
     <WrapperPost>
       <Header />
-      <TypeMessage />
+      <TypeMessage setState={setPosts} />
       {
         posts?.map(post => CardMessage(post,context,posts,setPosts))       
       }

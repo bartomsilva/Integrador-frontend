@@ -1,7 +1,11 @@
 import { styled } from "styled-components";
 import { Line } from "../../pages/Login/styled";
+import { useForm } from "../../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { LabedditContext } from "../../global/LabedditContext";
 
-export const WrapperMessage = styled.div`
+export const WrapperMessage = styled.form`
   display: flex;
   max-width: 365px;
   height: fit-content;
@@ -18,10 +22,9 @@ export const ContainerMessage = styled.div`
   background-color: #EDEDED;
   border-radius: 12px;
   margin: 20px 0 15px 0;
-;
 `;
 
-export const ButtonMessage = styled.div`
+export const ButtonMessage = styled.button`
   width: 364px;
   height: 47px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
@@ -36,6 +39,10 @@ export const ButtonMessage = styled.div`
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 15px;
+
+  &:hover{
+    cursor: pointer;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -48,25 +55,57 @@ export const TextArea = styled.textarea`
   border-radius: 12px;
 `;
 
-export default function TypeMessage() {
+export default function TypeMessage(props) {
+  // action = posts / comments
+
+  const navigate = useNavigate()
+  const [form, onChange, resetForm] =
+    useForm({ content: "" })
+  const context = useContext(LabedditContext)
+
+  const action = context.flow
+
+  const sendFormAction = async (e) => {
+    e.preventDefault()
+
+    if (action === "posts") {
+      const newAction = { content: form.content }
+      await context.sendPost(newAction)
+      context.setFlow("reload")
+    } else {
+
+      // const newAction = { postId: postId }
+
+    }
+    resetForm()
+  }
 
   return (
 
-    <WrapperMessage>
+    <WrapperMessage onSubmit={sendFormAction}>
 
-      {/* place hoolder do textarea via paramentros*/}
       <ContainerMessage>
-        <TextArea placeholder="Escreva seu post" />
+        <TextArea
+          id="content"
+          name="content"
+          value={form.content}
+          onChange={onChange}
+          placeholder={action === "posts"
+            ? "Escreva seu post"
+            : "Adicionar comentário"}
+          min="1"
+          required
+        />
       </ContainerMessage>
 
       {/* conteúdo do botão via paramentros - texto e função*/}
       <ButtonMessage>
-        Postar
+        {action === "posts"
+          ? "Postar"
+          : "Responder"
+        }
       </ButtonMessage>
-
       <Line></Line>
-
     </WrapperMessage>
-
   )
 }
