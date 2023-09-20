@@ -31,7 +31,7 @@ export default function Header() {
 
       <ContainerButton>  
         {
-          flow === "login" && !getToken() ? 
+          flow === "login"  ? 
             <Button onClick={()=>navigate("/")}>Login</Button>
           :
             <Button onClick={()=>logout(navigate)}>Logout</Button>

@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
+import { LabedditContext } from "../global/LabedditContext";
 import { PageNotFound } from "../pages/NotFound/notFound";
 import SingupPage from "../pages/singup/SingupPage";
+import LoginPage from "../pages/login/LoginPage";
 import PostPage from "../pages/Posts/postPage";
 import { useContext } from "react";
-import { LabedditContext } from "../global/LabedditContext";
 
 export function Router() {
 
@@ -18,7 +19,7 @@ export function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Loin />} />
+                <Route path='/' element={<LoginPage/>} />
                 <Route path='/singup' element={<SingupPage />} />
                 <Route path={"/posts"} element={
                     <ProtectedRoute redirectTo={'/'}>

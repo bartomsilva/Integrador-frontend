@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import { LabedditContext } from "../../global/LabedditContext";
 import { useNavigate } from "react-router-dom";
-import {
-  Button, ContainerButtons, ContainerInput, Input,
-  Line, LoginHeader, Title, WrapperLogin
-} from "./styled";
 
 import { useForm } from "../../hooks/useForm";
+import { Button, ContainerButtons, ContainerInput, Input, Line,
+   LoginHeader, Title, WrapperLogin } from "./styled";
 
 export default function LoginPage() {
 
@@ -17,6 +15,7 @@ export default function LoginPage() {
   const { setFlow } = context
 
   context.resetToken()
+  setFlow("login")
 
   const sendFormLogin = async (e) => {
     e.preventDefault()

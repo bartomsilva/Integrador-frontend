@@ -1,9 +1,9 @@
-import { styled } from "styled-components";
-import { Line } from "../../pages/Login/styled";
-import { useForm } from "../../hooks/useForm";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { LabedditContext } from "../../global/LabedditContext";
+import { Line } from "../../pages/login/styled";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
+import { styled } from "styled-components";
+import { useContext } from "react";
 
 export const WrapperMessage = styled.form`
   display: flex;
@@ -30,7 +30,7 @@ export const ButtonMessage = styled.button`
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
   padding: 12px, 145px, 12px, 145px;
   border-radius: 12px;  
-
+  border: none;
   font-family: IBM Plex Sans;
   font-size: 18px;
   font-weight: 700;
