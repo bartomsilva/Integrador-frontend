@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate, BrowserRouter, useNavigate } from "react-router-dom";
 import { LabedditContext } from "../global/LabedditContext";
-import { PageNotFound } from "../pages/NotFound/notFound";
+import { PageNotFound } from "../pages/notFound/NotFound";
 import SignupPage from "../pages/signup/SignupPage";
 import LoginPage from "../pages/login/LoginPage";
 import PostPage from "../pages/posts/PostPage";
