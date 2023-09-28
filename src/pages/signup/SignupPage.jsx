@@ -123,7 +123,7 @@ export default function SignupPage() {
         </ContainerTerms>
 
         <ContainerButtons>
-          <Button type="submit">Cadastrar</Button>
+          <Button>Cadastrar</Button>
         </ContainerButtons>
 
       </WrapperSingup>
