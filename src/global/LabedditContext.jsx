@@ -151,6 +151,7 @@ export default function LabedditProvider({ children }) {
         setUserLoged(response.data.user)
       })
       .catch(error => {
+        console.log(error)
         if (error.response) {
           modal("Email ou senha inválida", "", "error")
         } else {
