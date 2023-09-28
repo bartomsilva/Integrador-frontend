@@ -60,7 +60,7 @@ export default function LoginPage() {
       </ContainerInput>
 
       <ContainerButtons>
-        <Button type="submit">Continuar</Button>
+        <Button>Continuar</Button>
         <Line></Line>
         <Button onClick={() => handleSingUp(navigate)}>Crie uma conta!</Button>
       </ContainerButtons>
