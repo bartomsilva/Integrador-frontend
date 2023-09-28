@@ -4,7 +4,8 @@ export const WrapperLogin = styled.form`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
-  width: 428px;
+  /* width: 428px; */
+  padding: 20px;
   min-height: 100vh;
 `;
 
@@ -33,7 +34,7 @@ export const LoginHeader = styled.div`
 `;
 
 export const ContainerInput = styled.div`
-  width: 100;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -49,21 +50,25 @@ export const ContainerButtons = styled.div`
 `;
 
 export const Line  = styled.div`
-  width: 363.0055158939032px;
+  /* width: 363.0055158939032px; */
+  width: 100%;
+
   height: 2px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
 `;
 
 export const Input = styled.input`
   display: block;
-  width: 363px;
+  
+  /* width: 363px; */
+  width: 100%;
+
   height: 60px;
   margin: 1px 0px;
   padding-inline: 5px;
   border-color: rgba(0,0,0,0.2);
   border-radius: 4px;
   transition: 0.3s ease;
-
   
   &:focus {
     border-width: 2.8px;
@@ -78,7 +83,10 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   display: block;
-  width: 365px;
+  
+  /* width: 365px; */
+  width: 100%;
+
   height: 51px;
   padding: 13px, 133px, 13px, 133px;
   border-radius: 27px;

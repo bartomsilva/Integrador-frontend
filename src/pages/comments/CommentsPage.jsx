@@ -15,19 +15,21 @@ export default function CommentsPage() {
   const navigate = useNavigate()
   const { postSelect, setPostSelect } = context
   const [comments, setComments] = useState([])
-  
-   // carrega os posts
 
+  // indica o modo do post e do comment
+  const [editing, setEditing] = useState(null)
+
+  // carrega os comentários
   useEffect(() => {
     getComments();
-  } ,[]);
+  }, [editing, comments]);
 
   const getComments = async () => {
     const token = context.getToken()
     try {
       const res =
         await axios
-          .get(BASE_URL + "/comments/"+context.postSelect[0].id, {
+          .get(BASE_URL + "/comments/" + context.postSelect[0].id, {
             headers: {
               Authorization: token
             }
@@ -39,17 +41,18 @@ export default function CommentsPage() {
   };
 
   return (
-    <WrapperComments>
-
+    <>
       <Header />
-      {
-        CardMessagePosts(postSelect[0],context,postSelect,setPostSelect, navigate)       
-      }
-      <TypeMessageComments />
-      {
-        // renderiza os COMENTÁRIOS
-        comments?.map( (comment) => CardMessageComments(comment, context, comments, setComments))
-      }
-    </WrapperComments>
+      <WrapperComments>
+        {
+          CardMessagePosts(postSelect[0], context, postSelect, setPostSelect, navigate, editing, setEditing)
+        }
+        <TypeMessageComments />
+        {
+          // renderiza os COMENTÁRIOS
+          comments?.map((comment) => CardMessageComments(comment, context, comments, setComments, editing, setEditing, postSelect[0]))
+        }
+      </WrapperComments>
+    </>
   )
 }

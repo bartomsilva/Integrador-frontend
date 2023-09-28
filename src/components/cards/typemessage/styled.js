@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 export const WrapperMessage = styled.form`
   display: flex;
-  max-width: 365px;
+  /* max-width: 365px; */
+  width: 100%;
   height: fit-content;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -11,15 +12,18 @@ export const WrapperMessage = styled.form`
 `;
 
 export const ContainerMessage = styled.div`
-  width: 364px;
+  /* width: 364px; */
+  width: 100%;
   height: 131px;
   background-color: #EDEDED;
   border-radius: 12px;
   margin: 20px 0 15px 0;
+ 
 `;
 
 export const ButtonMessage = styled.button`
-  width: 364px;
+  /* width: 364px; */
+  width: 100%;
   height: 47px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
   padding: 12px, 145px, 12px, 145px;
@@ -50,7 +54,8 @@ export const TextArea = styled.textarea`
 `;
 
 export const Line  = styled.div`
-  width: 363.0055158939032px;
+  /* width: 363.0055158939032px; */
+  width: 100%;
   height: 2px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
 `;

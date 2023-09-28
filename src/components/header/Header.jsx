@@ -2,21 +2,26 @@ import { LabedditContext } from "../../global/LabedditContext";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react"
 import {
-  Button, ContainerButton,
+  Button, ButtonClose, ContainerButton,
   ContainerUser,
   HeaderLogo, WrapperHeader
 } from "./styled"
 
 export default function Header() {
   const context = useContext(LabedditContext)
-  const { flow, logout, userLoged } = context
+  const { logout, userLoged } = context
+  const GO_BACK = -1
 
   const navigate = useNavigate()
 
   return (
     <WrapperHeader>
       <ContainerUser>
-        <p>{userLoged?.userName}</p>
+        {
+          window.location.href.includes("comments") && 
+            <ButtonClose onClick={()=>{ navigate(GO_BACK)}} />
+        }
+        {/* <p>{userLoged?.userName}</p> */}
       </ContainerUser>
       <HeaderLogo>
         <img src="image/logoSmall.svg" alt="logo header" />
@@ -24,7 +29,7 @@ export default function Header() {
 
       <ContainerButton>
         {
-          flow === "login" ?
+          window.location.href.includes("singup") ?
             <Button onClick={() => navigate("/")}>Login</Button>
             :
             <Button onClick={() => logout(navigate)}>Logout</Button>

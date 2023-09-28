@@ -1,70 +1,90 @@
+import { handlePostComment, infoLikes, updateLocalStatusLike } from "../../../pages/posts/PostPage"
 import {
-  ButtonComment, ButtonDislike, ButtonLike,
+  ButtonCancel,
+  ButtonConfirm,
+  ButtonDeletePostComment,
+  ButtonDislike, ButtonEditPostComment, ButtonLike,
   ContainerButtonComment, ContainerButtonLiked,
-  ContainerMessage, MessageContent, MessageStatus,
-  Score, TextUserCreator
+  ContainerMessage, ContainerUser, MessageContent, MessageStatus,
+  Score, TextArea, TextUserCreator
 } from "./styled"
 
-export default function CardMessageComments(comment, context, comments, setComments, navigate) {
+export default function CardMessageComments(
+  comment, context, comments, setComments, editing, setEditing, post) {
 
-  // atualiza o status do like na tela
-  const updateStatusLike = (action) => {
-    const commentId = comment.id ? comment.id : no
-    const statusLiked = comment.liked ? comment.liked : no
-    let newLikes = comment.likes ? comment.likes : 0
-    let newDislikes = comment.dislikes ? comment.dislikes : 0
+  const { deletePostComment } = context
 
-    if (!commentId) return
-
-    let newLiked
-
-    // sem atividade
-    if (statusLiked == "no") {
-      newLiked = action
-      if (action === "like") {
-        newLikes++
-      } else {
-        newDislikes++
-      }
-      // remove o like
-    } else if (statusLiked === action) {
-      newLiked = "no"
-      if (statusLiked === "like") {
-        newLikes--
-      } else {
-        newDislikes--
-      }
-    } else if (statusLiked === "dislike") {
-      newLiked = "like"
-      newLikes++
-      newDislikes--
-    } else {
-      newLiked = "dislike"
-      newLikes--
-      newDislikes++
-    }
-
-    const updatedComments = comments.map((comment) => {
-      if (comment.id === commentId) {
-        return {
-          ...comment, liked: newLiked,
-          likes: newLikes,
-          dislikes: newDislikes
-        };
-      }
-      return comment;
-    });
-    setComments(updatedComments);
-    context.setFlow("reload")
-  }
-  
   return (
     <ContainerMessage key={comment.id}>
-
-      <TextUserCreator>Enviado por: {comment?.creator.name}</TextUserCreator>
+      <ContainerUser>
+        <TextUserCreator>
+          Enviado por: {comment?.creator.name}
+        </TextUserCreator>
+        { // BOTÕES EDIT e DELETAR
+          !editing  // não está em modo de edição 
+          && comment.creator.id == context.userLoged.userId // criador do posts
+          && window.location.href.includes("comments") // estando na janela de posts
+          && ( 
+            <ContainerButtonComment>
+              <ButtonEditPostComment
+                onClick={() => { setEditing(comment) }}
+              />
+              <ButtonDeletePostComment
+                onClick={() => { 
+                  deletePostComment({ postId: comment.id, action: "comments" })
+                  // ajusta o valor dos comentários no post 
+                  post.comments --
+                  setEditing(null)
+                 }}
+              />
+            </ContainerButtonComment>
+          )
+        }
+        { // BOTÃO CONFIRMAR E CANCELAR
+          editing // modo de edição
+          && comment.creator.id == context.userLoged.userId // criador do post
+          && comment.id == editing.id // post em edição
+          && ( // exibe os botões CONFIRMAR e CANCELAR
+            <ContainerButtonComment>
+              <ButtonConfirm  // BTN CONFIRMAR
+                onClick={() => {
+                  context.editPostComment(
+                    {
+                      postId: editing.id,
+                      content: editing.content,
+                      action: "comments"
+                    }
+                  )
+                  setEditing(null)
+                }}
+              />
+              <ButtonCancel // BTN CANCELAR
+                onClick={
+                  () => { setEditing(null) }}
+              />
+            </ContainerButtonComment>
+          )
+        }
+      </ContainerUser>
 
       <MessageContent>
-        {comment?.content}
+        {
+          // EDITANDO O COMENTÁRIO
+          editing && comment.id == editing.id
+            ? (
+              <TextArea
+                id="content"
+                name="content"
+                value={editing.content}
+                onChange={(e) => handlePostComment(e.target.value, setEditing)}
+                min="1"
+                required>
+              </TextArea>
+            )
+            : ( // MOSTRANDO CONTEÚDO DO POST
+              <>{comment?.content}</>
+            )
+        }
       </MessageContent>
 
       <MessageStatus>
@@ -72,29 +92,21 @@ export default function CardMessageComments(comment, context, comments, setComme
           <ButtonLike
             onClick={() => {
               context.sendLike(comment.id, "comments", true)
-              updateStatusLike("like")
+              updateLocalStatusLike(comment, "like", comments, setComments)
             }}
-            applyfilter={comment.liked === "like" ? "true" : null}>
+            $applyfilter={comment.liked === "like" ? "true" : null}>
           </ButtonLike>
-
-          <Score>{comment.likes}</Score>
-
+          <Score onMouseOver={() => infoLikes(comment)}>{comment.likes - comment.dislikes}</Score>
           <ButtonDislike
             onClick={() => {
               context.sendLike(comment.id, "comments", false)
-              updateStatusLike("dislike")
+              updateLocalStatusLike(comment, "dislike", comments, setComments)
             }}
-            applyfilter={comment.liked === "dislike" ? "true" : null}>
+            $applyfilter={comment.liked === "dislike" ? "true" : null}>
           </ButtonDislike>
-
         </ContainerButtonLiked>
 
-        <ContainerButtonComment noborder={"yes"}>
-          {/* <ButtonComment>
-            <svg src="/image/comments.svg" alt="" />
-          </ButtonComment>
-          <Score>{comment.comments > 0 ? comment.comments : 0}</Score> */}
-        </ContainerButtonComment>
+        <ContainerButtonComment $noborder={"yes"} />
 
       </MessageStatus>
 

@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
-export const WrapperHeader = styled.div`
+export const WrapperHeader = styled.header`
+  max-width: 1200px;
   display: flex;
-  width: 100%;
   height: 50px;
   justify-content: space-between;
   align-items: center;
@@ -41,12 +41,25 @@ export const Button = styled.button`
   background-color: transparent;
   padding: 5px;
   color: #4088CB;
-
   font-family: Noto Sans;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0em;
   &:hover{
     color: #5099CB;
+    cursor: pointer;
   }
 `;
+
+export const ButtonClose = styled.button`
+  display: block;
+  width: 25px;
+  height: 24px;
+  background-image:  url("/image/close.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
+`

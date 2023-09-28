@@ -1,28 +1,32 @@
-import { useContext } from "react";
-import { LabedditContext } from "../../global/LabedditContext";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import {
   AcceptTerms, AlertTerms, Button, ContainerButtons, ContainerInput,
-  ContainerTerms, Input, MainContainer, SingupHeader, TextBlue,
+  ContainerTerms, Input, MainContainer, SingupHeader, SubTitle, TextBlue,
   TextTerms, Title, WrapperSingup
 } from "./styled";
 import { useForm } from "../../hooks/useForm";
+import { handlePosts } from "../../router/cordinator";
 
-export default function SingupPage() {
+//====================================
+export default function SignupPage() {
 
   const navigate = useNavigate()
   const [form, onChange, resetForm] =
-    useForm({ name: "", email: "", password: "", repassword: "", newsLetter: "" })
-  const context = useContext(LabedditContext)
+    useForm({
+      name: "",
+      email: "",
+      password: "",
+      repassword: "",
+      newsLetter: ""
+    })
 
-  const { setFlow } = context
+  // const context = useContext(LabedditContext)
 
   const sendFormSingUp = async (e) => {
-
     e.preventDefault()
     if (form.password !== form.repassword) {
-      swal("As senhas não são iguais!", "", "error")
+      context.modal("As senhas não são iguais!", "", "error")
     } else {
       const newUser = {
         name: form.name,
@@ -32,14 +36,13 @@ export default function SingupPage() {
       }
       await context.userSingup(newUser)
       if (context.getToken()) {
-        setFlow("posts")
-        navigate("/posts")
+        handlePosts(navigate)
       }
     }
     resetForm()
-
-
   }
+
+
   return (
     <MainContainer onSubmit={sendFormSingUp}>
       <Header />
@@ -47,8 +50,11 @@ export default function SingupPage() {
       <WrapperSingup>
         <SingupHeader>
           <Title>
-            Olá, boas vindas ao LabEddit;)
+            Olá, boas vindas
           </Title>
+          <SubTitle>
+            ao LabEddit;)
+          </SubTitle>
         </SingupHeader>
 
         <ContainerInput>
@@ -73,7 +79,7 @@ export default function SingupPage() {
             title='insira um email válido!'
             required />
           <Input
-            type="text"
+            type="password"
             placeholder="Senha"
             id="password"
             name="password"
@@ -84,7 +90,7 @@ export default function SingupPage() {
             max='15'
             required />
           <Input
-            type="text"
+            type="password"
             placeholder="Repita a Senha"
             id="repassword"
             name="repassword"

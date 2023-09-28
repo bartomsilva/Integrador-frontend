@@ -7,6 +7,20 @@ const Reset = createGlobalStyle`
 		padding: 0;
 		box-sizing: border-box;
 	};
+    
+    :root {
+    --color-liked: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
+    --color-noliked: none;
+    max-width: 800px;
+    min-width: 320px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,.7);        
+  }
+    body {        
+        line-height: 1;
+        background-color: #ffff;
+    }
 	   
 	textarea:focus, input:focus {
     	box-shadow: 0 0 0 0;
@@ -18,7 +32,6 @@ const Reset = createGlobalStyle`
     *:after {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
-        /* box-sizing: border-box; */
     }
 
     html,
@@ -124,11 +137,7 @@ const Reset = createGlobalStyle`
     section {
         display: block;
     }
-
-    body {
-        line-height: 1;
-    }
-
+    
     ol,
     ul {
         list-style: none;
