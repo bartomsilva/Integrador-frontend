@@ -39,6 +39,7 @@ export const ContainerInput = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   border-radius: 4;
+  row-gap: 5px;
 `;
 
 export const ContainerButtons = styled.div`
