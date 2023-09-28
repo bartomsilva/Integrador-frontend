@@ -15,7 +15,6 @@ export default function SignupPage() {
   
   const context = useContext(LabedditContext)
   const navigate = useNavigate()
-  const { isLoading, setIsloading} = context
   const [form, onChange, resetForm] =
     useForm({
       name: "",
