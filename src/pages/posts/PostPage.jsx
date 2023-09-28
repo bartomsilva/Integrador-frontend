@@ -39,8 +39,10 @@ export default function PostPage() {
             }
           })
       setPosts(res.data);
-      setIsLoading(false)
     } catch (error) { }
+    finally{
+      setIsLoading(false)
+    }
   };
 
   return (

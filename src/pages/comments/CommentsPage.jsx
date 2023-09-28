@@ -39,10 +39,11 @@ export default function CommentsPage() {
               Authorization: token
             }
           })
-      setIsLoading(false)
       setComments(res.data);
     } catch (error) {
       // console.log(error)
+    } finally {
+      setIsLoading(false)
     }
   };
 

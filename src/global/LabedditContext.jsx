@@ -67,7 +67,6 @@ export default function LabedditProvider({ children }) {
   // create post
   const sendPost = async (input, action) => {
     const token = getToken();
-    console.log(input)
     const body = {
       content: input.content,
     };
