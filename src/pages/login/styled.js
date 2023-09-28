@@ -58,23 +58,19 @@ export const Line  = styled.div`
 `;
 
 export const Input = styled.input`
-  display: block;
-  
-  /* width: 363px; */
+  display: block;  
   width: 100%;
-
   height: 60px;
   margin: 1px 0px;
   padding-inline: 5px;
+  text-align: center;
   border-color: rgba(0,0,0,0.2);
   border-radius: 4px;
-  transition: 0.3s ease;
-  
+  transition: 0.3s ease;  
   &:focus {
     border-width: 2.8px;
     border-color: #9747ff;   
   }
-
   &:hover {
     border-width: 4.5px;
     border-color: #9747ff;  

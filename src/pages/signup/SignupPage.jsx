@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import {
@@ -7,10 +8,12 @@ import {
 } from "./styled";
 import { useForm } from "../../hooks/useForm";
 import { handlePosts } from "../../router/cordinator";
+import { LabedditContext } from "../../global/LabedditContext";
 
 //====================================
 export default function SignupPage() {
-
+  
+  const context = useContext(LabedditContext)
   const navigate = useNavigate()
   const [form, onChange, resetForm] =
     useForm({
@@ -41,7 +44,6 @@ export default function SignupPage() {
     }
     resetForm()
   }
-
 
   return (
     <MainContainer onSubmit={sendFormSingUp}>
@@ -121,7 +123,7 @@ export default function SignupPage() {
         </ContainerTerms>
 
         <ContainerButtons>
-          <Button>Cadastrar</Button>
+          <Button type="submit">Cadastrar</Button>
         </ContainerButtons>
 
       </WrapperSingup>

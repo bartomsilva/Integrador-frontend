@@ -16,16 +16,21 @@ export default function CommentsPage() {
   const { postSelect, setPostSelect } = context
   const [comments, setComments] = useState([])
 
+  // indica se já faz a leitura dos posts
+  const [isLoading, setIsLoading] = useState(false)
+
   // indica o modo do post e do comment
   const [editing, setEditing] = useState(null)
 
   // carrega os comentários
   useEffect(() => {
     getComments();
-  }, [editing, comments]);
+  }, [context]);
+  // }, [editing, comments, context]);
 
   const getComments = async () => {
     const token = context.getToken()
+    setIsLoading(true)
     try {
       const res =
         await axios
@@ -34,6 +39,7 @@ export default function CommentsPage() {
               Authorization: token
             }
           })
+      setIsLoading(false)
       setComments(res.data);
     } catch (error) {
       // console.log(error)
@@ -49,8 +55,11 @@ export default function CommentsPage() {
         }
         <TypeMessageComments />
         {
-          // renderiza os COMENTÁRIOS
-          comments?.map((comment) => CardMessageComments(comment, context, comments, setComments, editing, setEditing, postSelect[0]))
+          isLoading
+            ?
+            <img src="/image/loading.gif"></img>
+            :
+            comments?.map((comment) => CardMessageComments(comment, context, comments, setComments, editing, setEditing, postSelect[0]))
         }
       </WrapperComments>
     </>

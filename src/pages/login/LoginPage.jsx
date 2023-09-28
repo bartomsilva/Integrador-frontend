@@ -19,14 +19,13 @@ export default function LoginPage() {
   
   const sendFormLogin = async (e) => {
     e.preventDefault()
-    resetForm()
     await context.userLogin(form)
     const response = context.getToken()
+    resetForm()
     if (response) {
       handlePosts(navigate)
     }
   }
-
 
   return (
 
@@ -61,7 +60,7 @@ export default function LoginPage() {
       </ContainerInput>
 
       <ContainerButtons>
-        <Button>Continuar</Button>
+        <Button type="submit">Continuar</Button>
         <Line></Line>
         <Button onClick={() => handleSingUp(navigate)}>Crie uma conta!</Button>
       </ContainerButtons>

@@ -49,7 +49,7 @@ export default function PostPage() {
       <WrapperPost>
         <TypeMessagePosts />
         {
-          isLoading ? <h1>lendo</h1> :
+          isLoading ? <img src="/image/loading.gif"></img> :
 
             posts?.map(post => CardMessagePosts(
               post,
