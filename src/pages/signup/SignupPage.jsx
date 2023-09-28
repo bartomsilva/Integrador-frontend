@@ -37,7 +37,7 @@ export default function SignupPage() {
         password: form.password,
         newsLetter: form.newsLetter
       }
-      await context.userSingup(newUser)
+      await context.userSignup(newUser)
       if (context.getToken()) {
         handlePosts(navigate)
       }

@@ -161,8 +161,8 @@ export default function LabedditProvider({ children }) {
   }
 
   // efetuar signup
-  const userSingup = async (input) => {
-    const PATH = BASE_URL + "/users/singup"
+  const userSignup = async (input) => {
+    const PATH = BASE_URL + "/users/signup"
     //localStorage.removeItem('token')
     await axios.post(PATH, input)
       .then(response => {
@@ -208,7 +208,7 @@ export default function LabedditProvider({ children }) {
   const context = {
     logout,
     userLogin,
-    userSingup,
+    userSignup,
     userLoged,
     getToken,
     resetToken,
