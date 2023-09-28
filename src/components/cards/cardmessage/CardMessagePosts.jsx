@@ -12,7 +12,7 @@ import {
 // renderiza CARD contendo texto do POST
 export default function CardMessagePosts(post, context, posts, setPosts, navigate, editing, setEditing) {
 
-  const { deletePostComment } = context
+  const { deletePostComment, reload, setReload } = context
 
   return (
     <ContainerMessage key={post.id}>
@@ -83,9 +83,11 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
       <MessageStatus>
         <ContainerButtonLiked>
           <ButtonLike
-            onClick={() => {
-              context.sendLike(post.id, "posts", true)
-              updateLocalStatusLike(post, "like", posts, setPosts)
+            onClick={async () => {
+              const result = await context.sendLike(post.id, "posts", true)
+              if (result) {
+                updateLocalStatusLike(post, "like", posts, setPosts)
+              }
             }}
             // aplicar cor no bõtão
             $applyfilter={post.liked === "like" ? "true" : null}
@@ -95,9 +97,11 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
           <Score onMouseOver={() => infoLikes(post)}>{post?.likes - post?.dislikes}</Score>
 
           <ButtonDislike
-            onClick={() => {
-              context.sendLike(post.id, "posts", false)
-              updateLocalStatusLike(post, "dislike", posts, setPosts)
+            onClick={async () => {
+              const result=await context.sendLike(post.id, "posts", false)
+              if (result) {
+                updateLocalStatusLike(post, "dislike", posts, setPosts)
+              }
             }}
             // aplicar a cor no botão
             $applyfilter={post.liked === "dislike" ? "true" : null}

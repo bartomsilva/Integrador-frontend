@@ -24,18 +24,18 @@ export default function CardMessageComments(
           !editing  // não está em modo de edição 
           && comment.creator.id == context.userLoged.userId // criador do posts
           && window.location.href.includes("comments") // estando na janela de posts
-          && ( 
+          && (
             <ContainerButtonComment>
               <ButtonEditPostComment
                 onClick={() => { setEditing(comment) }}
               />
               <ButtonDeletePostComment
-                onClick={() => { 
+                onClick={() => {
                   deletePostComment({ postId: comment.id, action: "comments" })
                   // ajusta o valor dos comentários no post 
-                  post.comments --
+                  post.comments--
                   setEditing(null)
-                 }}
+                }}
               />
             </ContainerButtonComment>
           )
@@ -90,26 +90,28 @@ export default function CardMessageComments(
       <MessageStatus>
         <ContainerButtonLiked>
           <ButtonLike
-            onClick={() => {
-              context.sendLike(comment.id, "comments", true)
-              updateLocalStatusLike(comment, "like", comments, setComments)
+            onClick={async () => {
+              const result = await context.sendLike(comment.id, "comments", true)
+              if (result) {
+                updateLocalStatusLike(comment, "like", comments, setComments)
+              }
             }}
             $applyfilter={comment.liked === "like" ? "true" : null}>
           </ButtonLike>
           <Score onMouseOver={() => infoLikes(comment)}>{comment.likes - comment.dislikes}</Score>
           <ButtonDislike
-            onClick={() => {
-              context.sendLike(comment.id, "comments", false)
-              updateLocalStatusLike(comment, "dislike", comments, setComments)
+            onClick={async () => {
+              const result = await context.sendLike(comment.id, "comments", false)
+              if (result) {
+                updateLocalStatusLike(comment, "dislike", comments, setComments)
+              }
             }}
             $applyfilter={comment.liked === "dislike" ? "true" : null}>
           </ButtonDislike>
         </ContainerButtonLiked>
-
         <ContainerButtonComment $noborder={"yes"} />
-
       </MessageStatus>
-
+      
     </ContainerMessage>
   )
 }

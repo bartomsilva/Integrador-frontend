@@ -103,27 +103,25 @@ export default function LabedditProvider({ children }) {
     const body = { action, like };
     const PATH = BASE_URL + "/likes/" + postId;
     const token = getToken();
+    let response=false
     try {
       await axios.put(PATH, body, {
         headers: {
           Authorization: token,
         },
       });
-      // If the request is successful, you can do something here if needed
+      response=true
     } catch (error) {
-      console.error(error);
       if (error.response) {
-
-        // The request was made and the server responded with a status code
         modal("Erro", `Status: ${error.response.data.message}`, "error");
       } else if (error.request) {
-        // The request was made but no response was received
         modal("Servidor não Responde", "Check sua conexão", "error");
       } else {
-        // Something happened in setting up the request
         modal("Solicitação inválida", error.message, "error");
       }
     }
+    console.log(response)
+    return response
   };
 
   // efetuar login
@@ -220,7 +218,9 @@ export default function LabedditProvider({ children }) {
     editPostComment,
     deletePostComment,
     modal,
-    checkLogin
+    checkLogin,
+    reload,
+    setReload
   }
 
   return (
