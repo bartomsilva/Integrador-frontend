@@ -5,6 +5,8 @@ export const WrapperComments = styled.div`
   flex-direction: column; 
   justify-content: flex-start;
   align-items: center;
-  width: 428px;
+  padding-top: 20px;
+  /* width: 428px; */
+  width: 100%;
   min-height: 100vh;
 `;

@@ -5,6 +5,9 @@ export const WrapperPost = styled.div`
   flex-direction: column; 
   justify-content: flex-start;
   align-items: center;
-  width: 428px;
+    /* width: 428px; */
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   min-height: 100vh;
 `;

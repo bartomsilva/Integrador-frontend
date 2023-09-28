@@ -1,10 +1,6 @@
 import { Container } from "./styled";
 
-
 export function PageNotFound(){
-
-  //const navigate = useNavigate()
-
   return(
     <Container>
       <h1>404</h1>

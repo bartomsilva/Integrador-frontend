@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
+
 export const ContainerMessage = styled.div`
-  width: 364px;
+  width: 100%;
   min-height: fit-content;
   background: #f8f1f1;
   padding: 15px;
@@ -28,7 +29,7 @@ export const MessageContent = styled.div`
 
 export const MessageStatus = styled.div`
   display: flex;
-  width: 174px;
+  width: fit-content;
   gap: 20px;
   justify-content: center;
   align-items: center;
@@ -42,18 +43,23 @@ export const ContainerButtonLiked = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 98px; // 88
+  width: fit-content;
+  gap: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
   height: 28px;
   border-radius: 28px;
   border: 1px solid rgba(0,0,0,0.12);
 `;
 
 export const ContainerButtonComment = styled(ContainerButtonLiked)`
-  width: 95.33px; 
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
   border-radius: 28px;   
-  ${({ noborder }) => noborder=="yes" &&
+  ${({ $noborder }) => $noborder=="yes" &&
     `
-      border-color: transparent;
+    border-color: transparent;
     `} 
 `;
 
@@ -70,16 +76,15 @@ export const ButtonLike = styled.button`
   &:hover{
     cursor: pointer;
   }
-  ${({ applyfilter }) => applyfilter &&
+  ${({ $applyfilter }) => $applyfilter &&
     `
       filter: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
     `} 
 `;
 
-
 export const ButtonDislike = styled(ButtonLike)`
   background-image: url(/image/dislike.svg);
-  ${({ applyfilter }) => applyfilter &&
+  ${({ $applyfilter }) => $applyfilter &&
     `
       filter: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
     `}  
@@ -98,7 +103,7 @@ export const ButtonComment = styled.button`
   }  
 `;
 
-export const ButtonEditPost = styled.button`
+export const ButtonEditPostComment = styled.button`
   width: 15.72px;
   height: 15.72px;
   border: none;
@@ -112,15 +117,15 @@ export const ButtonEditPost = styled.button`
   }  
 `;
 
-export const ButtonDeletePost = styled(ButtonEditPost)`
+export const ButtonDeletePostComment = styled(ButtonEditPostComment)`
   background-image: url(/image/delete.svg);
 `;
 
-export const ButtonConfirm = styled(ButtonEditPost)`
+export const ButtonConfirm = styled(ButtonEditPostComment)`
   background-image: url(/image/confirm.svg);
 `;
 
-export const ButtonCancel = styled(ButtonEditPost)`
+export const ButtonCancel = styled(ButtonEditPostComment)`
   background-image: url(/image/cancel.svg);
 `;
 
@@ -133,6 +138,9 @@ export const Score = styled.p`
   text-align: center; 
   color: #6F6F6F;
   margin: 0px 3px; 
+  &:hover{
+    cursor: pointer;
+  }
 `;
 
 export const ContainerUser = styled.div`
@@ -145,7 +153,6 @@ export const TextArea = styled.textarea`
   height: 200px;
   border: none;
   background-color: #EDEDED;
-  padding-inline: 20px;
-  padding: 10px 0px; 
+  padding: 10px 10px; 
   border-radius: 12px;
 `;

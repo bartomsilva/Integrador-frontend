@@ -9,7 +9,7 @@ export const WrapperSingup = styled.div`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
-  width: 428px;
+
   min-height: 100vh;
   padding: 60px 32px;
 `;
@@ -24,11 +24,19 @@ export const Title = styled.h1`
   color: #373737;
 `;
 
+export const SubTitle = styled.h1`
+  font-family: IBM Plex Sans;
+  font-size: 33px;
+  font-weight: 700;
+  line-height: 43px;
+  letter-spacing: 0em;
+  color: #373737;
+`;
+
 export const SingupHeader = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
   p{
     font-family: IBM Plex Sans;
     font-size: 16px;
@@ -39,7 +47,7 @@ export const SingupHeader = styled.div`
 `;
 
 export const ContainerInput = styled.div`
-  width: 100;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -79,7 +87,7 @@ export const TextTerms = styled.p`
   text-align: left;
 `;
 
-export const TextBlue=styled.span`
+export const TextBlue = styled.span`
   color: #4088CB
 `;
 
@@ -90,15 +98,16 @@ export const ContainerButtons = styled.div`
   align-items: center;  
 `;
 
-export const Line  = styled.div`
-  width: 363.0055158939032px;
+export const Line = styled.div`
+  /* width: 363.0055158939032px; */
+  width: 100%;
   height: 2px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
 `;
 
 export const Input = styled.input`
   display: block;
-  width: 363px;
+  width: 100%; 
   height: 60px;
   margin: 1px 0px;
   padding-inline: 5px;
@@ -115,11 +124,13 @@ export const Input = styled.input`
     border-width: 4.5px;
     border-color: #9747ff;  
   }
+  
 `;
 
 export const Button = styled.button`
   display: block;
-  width: 365px;
+  /* width: 365px; */
+  width: 100%;
   height: 51px;
   padding: 13px, 133px, 13px, 133px;
   border-radius: 27px;
@@ -143,5 +154,10 @@ export const Button = styled.button`
 
  `;
 
+
+export const ButtonToogleEye = styled.button`
+  width: 20px;
+  position: relative;
+`
 
 

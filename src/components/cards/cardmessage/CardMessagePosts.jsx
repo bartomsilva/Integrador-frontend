@@ -1,92 +1,48 @@
+import { handlePostComment, infoLikes, updateLocalStatusLike } from "../../../pages/posts/PostPage"
 import { handleComments } from "../../../router/cordinator"
 import {
   ButtonCancel,
-  ButtonComment, ButtonConfirm, ButtonDeletePost, ButtonDislike, ButtonEditPost, ButtonLike,
+  ButtonComment, ButtonConfirm, ButtonDeletePostComment,
+  ButtonDislike, ButtonEditPostComment, ButtonLike,
   ContainerButtonComment, ContainerButtonLiked,
   ContainerMessage, ContainerUser, MessageContent, MessageStatus,
   Score, TextArea, TextUserCreator
 } from "./styled"
+
+// renderiza CARD contendo texto do POST
 export default function CardMessagePosts(post, context, posts, setPosts, navigate, editing, setEditing) {
 
-  // atualiza o status do like na tela
-  const updateStatusLike = (post, action) => {
-    const postId = post.id ? post.id : no
-    const statusLiked = post.liked ? post.liked : no
-    let newLikes = post.likes ? post.likes : 0
-    let newDislikes = post.dislikes ? post.dislikes : 0
+  const { deletePostComment } = context
 
-    if (!postId) return
-    let newLiked
-
-    // sem atividade
-    if (statusLiked == "no") {
-      newLiked = action
-      if (action === "like") {
-        newLikes++
-      } else {
-        newDislikes++
-      }
-      // remove o like
-    } else if (statusLiked === action) {
-      newLiked = "no"
-      if (statusLiked === "like") {
-        newLikes--
-      } else {
-        newDislikes--
-      }
-    } else if (statusLiked === "dislike") {
-      newLiked = "like"
-      newLikes++
-      newDislikes--
-    } else {
-      newLiked = "dislike"
-      newLikes--
-      newDislikes++
-    }
-    const updatedPosts = posts.map((post) => {
-      if (post.id === postId) {
-        return {
-          ...post, liked: newLiked,
-          likes: newLikes,
-          dislikes: newDislikes
-        };
-      }
-      return post;
-    });
-    setPosts(updatedPosts);
-  }
-  // atualizar status do textArea
-  const handlePost = (e) => {
-    setEditing(prevState => ({
-      ...prevState,
-      content: e
-    }));
-  };
   return (
     <ContainerMessage key={post.id}>
       <ContainerUser>
-
         <TextUserCreator>
           Enviado por: {post.creator.name}
         </TextUserCreator>
 
         {
-          // somente o dono do post 
-          post.creator.id == context.userLoged.userId &&
-            !editing && window.location.href.includes("posts") ?
+          !editing  // não está em modo de edição 
+          && post.creator.id == context.userLoged.userId // criador do posts
+          && window.location.href.includes("posts") // estando na janela de posts
+          && ( // exite os botões EDITAR e DELETAR
             <ContainerButtonComment>
-              <ButtonEditPost onClick={() => {
-                setEditing(post)
-              }} />
-              <ButtonDeletePost onClick={() => {
-                context.deletePostComment({ postId: post.id, action: "posts" })
-              }}
+              <ButtonEditPostComment
+                onClick={() => { setEditing(post) }} />
+              <ButtonDeletePostComment
+                onClick={() => { deletePostComment({ postId: post.id, action: "posts" }) }}
               />
             </ContainerButtonComment>
-            : post.creator.id == context.userLoged.userId &&
-              editing && post.id == editing.id ?
-              <ContainerButtonComment>
-                <ButtonConfirm onClick={() => {
+          )
+        }
+        {
+          editing // modo de edição
+          && post.creator.id == context.userLoged.userId // criador do post
+          && post.id == editing.id // post em edição
+          && ( // exibe os botões CONFIRMAR e CANCELAR
+            <ContainerButtonComment>
+              <ButtonConfirm  // BTN CONFIRMAR
+                onClick={() => {
                   context.editPostComment(
                     {
                       postId: editing.id,
@@ -95,70 +51,71 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
                     }
                   )
                   setEditing(null)
-                }} />
-                { }
-                <ButtonCancel onClick={
-                  () => { setEditing(null) }} />
-              </ContainerButtonComment>
-              : ""
+                }}
+              />
+              <ButtonCancel // BTN CANCELAR
+                onClick={
+                  () => { setEditing(null) }}
+              />
+            </ContainerButtonComment>
+          )
         }
       </ContainerUser>
       <MessageContent>
         {
-          // edita post
-          editing && post.id == editing.id ? (
-            <TextArea
-              id="content"
-              name="content"
-              value={editing.content}
-              onChange={(e) => handlePost(e.target.value)}
-              min="1"
-              required>
-            </TextArea>
-          ) : (
-            <>
-              {post.content}
-            </>
-          )
+          // edita post - EDITANDO O POST
+          editing && post.id == editing.id
+            ? (
+              <TextArea
+                id="content"
+                name="content"
+                value={editing.content}
+                onChange={(e) => handlePostComment(e.target.value, setEditing)}
+                min="1"
+                required>
+              </TextArea>
+            )
+            : ( // exibe conteúdo do POST
+              <>{post.content}</>
+            )
         }
       </MessageContent>
-
       <MessageStatus>
         <ContainerButtonLiked>
           <ButtonLike
             onClick={() => {
               context.sendLike(post.id, "posts", true)
-              updateStatusLike(post, "like")
+              updateLocalStatusLike(post, "like", posts, setPosts)
             }}
             // aplicar cor no bõtão
-            applyfilter={post.liked === "like" ? "true" : null}>
-          </ButtonLike>
+            $applyfilter={post.liked === "like" ? "true" : null}
+          />
 
-          <Score>{post?.likes}</Score>
+          {/* <Score>{post?.likes} = {post?.dislikes}</Score> */}
+          <Score onMouseOver={() => infoLikes(post)}>{post?.likes - post?.dislikes}</Score>
 
           <ButtonDislike
             onClick={() => {
               context.sendLike(post.id, "posts", false)
-              updateStatusLike(post, "dislike")
+              updateLocalStatusLike(post, "dislike", posts, setPosts)
             }}
             // aplicar a cor no botão
-            applyfilter={post.liked === "dislike" ? "true" : null}>
-          </ButtonDislike>
-
+            $applyfilter={post.liked === "dislike" ? "true" : null}
+          />
         </ContainerButtonLiked>
 
         <ContainerButtonComment>
-          <ButtonComment onClick={() => {
-            context.setFlow("comments")
-            const postSelected = [post]
-            context.setPostSelect(postSelected)
-            handleComments(navigate)
-          }}>
-            {/* <svg src="/image/comments.svg" alt="" /> */}
-          </ButtonComment>
+          <ButtonComment
+            onClick={() => {
+              const postSelected = [post]
+              context.setPostSelect(postSelected)
+              handleComments(navigate)
+            }}
+          />
           <Score>{post.comments > 0 ? post.comments : 0}</Score>
         </ContainerButtonComment>
       </MessageStatus>
-    </ContainerMessage>
+    </ContainerMessage >
   )
 }
+

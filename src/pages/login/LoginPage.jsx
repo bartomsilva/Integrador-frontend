@@ -1,36 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LabedditContext } from "../../global/LabedditContext";
 import { useNavigate } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
-import { Button, ContainerButtons, ContainerInput, Input, Line,
-   LoginHeader, Title, WrapperLogin } from "./styled";
+import {
+  Button, ContainerButtons, ContainerInput, Input, Line,
+  LoginHeader, Title, WrapperLogin
+} from "./styled";
+import { handlePosts, handleSingUp } from "../../router/cordinator";
 
 export default function LoginPage() {
-
+  
+  const context = useContext(LabedditContext)
   const navigate = useNavigate()
   const [form, onChange, resetForm] =
-    useForm({ email: "", password: "" })
-  const context = useContext(LabedditContext)
-  const { setFlow } = context
-
-  context.resetToken()
-  setFlow("login")
-
+  useForm({ email: "", password: "" })
+  
+  
   const sendFormLogin = async (e) => {
     e.preventDefault()
     resetForm()
-    await context.userLogin(form)    
+    await context.userLogin(form)
     const response = context.getToken()
-
     if (response) {
-      setFlow("posts")
-      navigate("/posts")
+      handlePosts(navigate)
     }
   }
 
+
   return (
-        
+
+    !context.userLoged && (
     <WrapperLogin onSubmit={sendFormLogin}>
 
       <LoginHeader>
@@ -50,7 +50,7 @@ export default function LoginPage() {
           title='insira um email válido!'
           required />
         <Input
-          type="text"
+          type="password"
           placeholder="digite sua senha"
           id="password"
           name="password"
@@ -63,9 +63,10 @@ export default function LoginPage() {
       <ContainerButtons>
         <Button>Continuar</Button>
         <Line></Line>
-        <Button onClick={() => navigate("/singup")}>Crie uma conta!</Button>
+        <Button onClick={() => handleSingUp(navigate)}>Crie uma conta!</Button>
       </ContainerButtons>
 
-    </WrapperLogin>
+    </WrapperLogin>)
+
   )
 }
