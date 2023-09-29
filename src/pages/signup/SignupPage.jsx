@@ -1,20 +1,21 @@
-import { useContext } from "react";
+import axios from "axios";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../../components/header/Header";
-import {
-  AcceptTerms, AlertTerms, Button, ContainerButtons, ContainerInput,
-  ContainerTerms, Input, MainContainer, SingupHeader, SubTitle, TextBlue,
-  TextTerms, Title, WrapperSingup
-} from "./styled";
 import { useForm } from "../../hooks/useForm";
 import { handlePosts } from "../../router/cordinator";
 import { LabedditContext } from "../../global/LabedditContext";
+import * as s from "./styled"
+import Header from "../../components/header/Header";
+import { ButtonToogleEye, ContainerEyePassword } from "../../styles/styles";
+import { BASE_URL } from "../../constants/constants";
 
 //====================================
 export default function SignupPage() {
-  
+
   const context = useContext(LabedditContext)
   const navigate = useNavigate()
+  const [eyePassword, setEyePassword] = useState()
+
   const [form, onChange, resetForm] =
     useForm({
       name: "",
@@ -24,46 +25,40 @@ export default function SignupPage() {
       newsLetter: ""
     })
 
-  // const context = useContext(LabedditContext)
-
   const sendFormSingUp = async (e) => {
     e.preventDefault()
-    if (form.password !== form.repassword) {
-      context.modal("As senhas não são iguais!", "", "error")
-    } else {
-      const newUser = {
-        name: form.name,
-        email: form.email,
-        password: form.password,
-        newsLetter: form.newsLetter
-      }
-      await context.userSignup(newUser)
-      if (context.getToken()) {
-        handlePosts(navigate)
-      }
+    // if (form.password !== form.repassword) {
+    //   context.modal("As senhas não são iguais!", "", "error")
+    // } else {
+    const newUser = {
+      name: form.name,
+      email: form.email,
+      password: form.password,
+      newsLetter: form.newsLetter
     }
-    resetForm()
+    await userSignup(newUser)
+    if (context.getToken()) {
+      handlePosts(navigate)
+    }
+    // }
   }
 
   return (
-    <MainContainer onSubmit={sendFormSingUp}>
+    <s.MainContainer onSubmit={sendFormSingUp}>
       <Header />
-
-      <WrapperSingup>
-        <SingupHeader>
-          <Title>
+      <s.WrapperSingup>
+        <s.SingupHeader>
+          <s.Title>
             Olá, boas vindas
-          </Title>
-          <SubTitle>
+          </s.Title>
+          <s.SubTitle>
             ao LabEddit;)
-          </SubTitle>
-        </SingupHeader>
-
-        <ContainerInput>
-          <Input
+          </s.SubTitle>
+        </s.SingupHeader>
+        <s.ContainerInput>
+          <s.Input
             type="text"
             placeholder="Apelido"
-            id="name"
             name="name"
             value={form.name}
             onChange={onChange}
@@ -71,19 +66,17 @@ export default function SignupPage() {
             min="2"
             max="15"
             required />
-          <Input
+          <s.Input
             type="email"
             placeholder="E-mail"
-            id="email"
             name="email"
             value={form.email}
             onChange={onChange}
             title='insira um email válido!'
             required />
-          <Input
-            type="password"
+          <s.Input
+            type={eyePassword ? "text" : "password"}
             placeholder="Senha"
-            id="password"
             name="password"
             value={form.password}
             onChange={onChange}
@@ -91,8 +84,8 @@ export default function SignupPage() {
             min="6"
             max='15'
             required />
-          <Input
-            type="password"
+          {/* <s.Input
+            type={eyePassword ? "text" : "password"}
             placeholder="Repita a Senha"
             id="repassword"
             name="repassword"
@@ -100,16 +93,22 @@ export default function SignupPage() {
             onChange={onChange}
             min="6"
             max='15'
-            required />
-        </ContainerInput>
+            required /> */}
+          <ContainerEyePassword>
+            <ButtonToogleEye $eye={eyePassword} onClick={() =>
+              setEyePassword(!eyePassword)}>
+            </ButtonToogleEye>
+          </ContainerEyePassword>
 
-        <ContainerTerms>
-          <AlertTerms>
-            <TextTerms>Ao continuar, você concorda com o nosso <TextBlue>Contrato de usuário </TextBlue>
-              e nossa <TextBlue>Política de Privacidade</TextBlue></TextTerms>
-          </AlertTerms>
+        </s.ContainerInput>
 
-          <AcceptTerms>
+        <s.ContainerTerms>
+          <s.AlertTerms>
+            <s.TextTerms>Ao continuar, você concorda com o nosso <s.TextBlue>Contrato de usuário </s.TextBlue>
+              e nossa <s.TextBlue>Política de Privacidade</s.TextBlue></s.TextTerms>
+          </s.AlertTerms>
+
+          <s.AcceptTerms>
             <input
               type="checkbox"
               id="newsLetter"
@@ -117,17 +116,33 @@ export default function SignupPage() {
               value={form.newsLetter}
               onChange={onChange}
             />
-            <TextTerms>Eu concordo em receber emails sobre coisas legais no Labeddit</TextTerms>
-          </AcceptTerms>
+            <s.TextTerms>Eu concordo em receber emails sobre coisas legais no Labeddit</s.TextTerms>
+          </s.AcceptTerms>
 
-        </ContainerTerms>
-
-        <ContainerButtons>
-          <Button>Cadastrar</Button>
-        </ContainerButtons>
-
-      </WrapperSingup>
-
-    </MainContainer>
+        </s.ContainerTerms>
+        <s.ContainerButtons>
+          <s.Button>Cadastrar</s.Button>
+        </s.ContainerButtons>
+      </s.WrapperSingup>
+    </s.MainContainer>
   )
+
+  // efetuar signup
+  async function userSignup(input) {
+    const PATH = BASE_URL + "/users/signup"
+    //localStorage.removeItem('token')
+    await axios.post(PATH, input)
+      .then(response => {
+        context.setToken(response.data.token)
+        context.setUserLoged(response.data.user)
+      })
+      .catch(error => {
+        if (error.response) {
+          const msgError = error.response.data.message
+          context.modal("Dados inválidos", msgError, "error")
+        } else {
+          context.modal("Sistema indisponível", "tente mais tarde", "error")
+        }
+      })
+  }
 }

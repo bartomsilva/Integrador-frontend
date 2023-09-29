@@ -15,7 +15,41 @@ export default function LabedditProvider({ children }) {
   // reload - refaz avisa sobre alteração nas tabelas
   const [reload, setReload] = useState(false)
 
-  // delete POST 
+
+  // CREATE POST / COMMENT
+  const sendPost = async (input, action) => {
+    const token = getToken();
+    const body = {
+      content: input.content,
+    };
+
+    let PATH = ""
+    if (action == "comments") {
+      PATH = BASE_URL + "/comments/" + input.postId
+    } else {
+      PATH = BASE_URL + "/posts"
+    }
+
+    try {
+      const result = await axios.post(PATH, body, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      setReload(!reload)
+      return result
+    } catch (error) {
+      if (error.response) {
+        modal(error.response.data.message, "", "error")
+      } else if (error.request) {
+        modal("Não Responde", "Verifique a sua conexão!", "error")
+      } else {
+        modal("Erro na requisição", error.message, "error")
+      }
+    }
+  };
+
+  // delete POST / COMMENT
   const deletePostComment = async (input) => {
     const postId = input.postId
     const PATH = BASE_URL + "/" + input.action + "/" + postId
@@ -39,7 +73,7 @@ export default function LabedditProvider({ children }) {
     }
   }
 
-  // edit POST 
+  // edit POST / COMMENT
   const editPostComment = async (input) => {
     const postId = input.postId
     const body = { content: input.content }
@@ -63,53 +97,20 @@ export default function LabedditProvider({ children }) {
       }
     }
   }
-  
-  // create post
-  const sendPost = async (input, action) => {
-    const token = getToken();
-    const body = {
-      content: input.content,
-    };
 
-    let PATH=""
-    if (action=="comments"){
-       PATH = BASE_URL + "/comments/"+input.postId
-    }else {
-      PATH = BASE_URL + "/posts"
-    }
-
-    try {
-      const result = await axios.post(PATH, body, {
-        headers: {
-          Authorization: token,
-        },
-      });
-      setReload(!reload)
-      return result
-    } catch (error) {
-      if (error.response) {
-        modal(error.response.data.message, "", "error")
-      } else if (error.request) {
-        modal("Não Responde", "Verifique a sua conexão!", "error")
-      } else {
-        modal("Erro na requisição", error.message, "error")
-      }
-    }
-  };
-
-  // efetua o like ou dislike
+  // efetua o LIKE / DISLIKE - POSTS/COMMMENTS
   const sendLike = async (postId, action, like) => {
     const body = { action, like };
     const PATH = BASE_URL + "/likes/" + postId;
     const token = getToken();
-    let response=false
+    let response = false
     try {
       await axios.put(PATH, body, {
         headers: {
           Authorization: token,
         },
       });
-      response=true
+      response = true
     } catch (error) {
       if (error.response) {
         modal("Erro", `Status: ${error.response.data.message}`, "error");
@@ -119,11 +120,10 @@ export default function LabedditProvider({ children }) {
         modal("Solicitação inválida", error.message, "error");
       }
     }
-    console.log(response)
     return response
   };
 
-  // efetuar login
+  // efetuar VERIFICA O LOGIN ( TOKEN VÁLIDO )
   const checkLogin = async () => {
     const PATH = BASE_URL + "/users/checkLogin"
     const token = getToken()
@@ -137,50 +137,7 @@ export default function LabedditProvider({ children }) {
         setUserLoged(response.data)
         result = true
       })
-
     return result
-  }
-  // efetuar login
-  const userLogin = async (input) => {
-    const PATH = BASE_URL + "/users/login"
-    //localStorage.removeItem('token')
-    await axios.post(PATH, input)
-      .then(response => {
-        setToken(response.data.token)
-        setUserLoged(response.data.user)
-      })
-      .catch(error => {
-        console.log(error)
-        if (error.response) {
-          modal("Email ou senha inválida", "", "error")
-        } else {
-          modal("Sistema indisponível", "tente mais tarde", "error")
-        }
-      })
-  }
-
-  // efetuar signup
-  const userSignup = async (input) => {
-    const PATH = BASE_URL + "/users/signup"
-    //localStorage.removeItem('token')
-    await axios.post(PATH, input)
-      .then(response => {
-        setToken(response.data.token)
-        setUserLoged(response.data.user)
-      })
-      .catch(error => {
-        if (error.response) {
-          const msgError = error.response.data.message
-          modal("Dados inválidos", msgError, "error")
-        } else {
-          modal("Sistema indisponível", "tente mais tarde", "error")
-        }
-      })
-  }
-
-  // paga o token
-  const resetToken = () => {
-    localStorage.removeItem("token")
   }
 
   // efetua o logof do usuário
@@ -190,25 +147,29 @@ export default function LabedditProvider({ children }) {
     setUserLoged(null)
   }
 
-  // salvar o toke
+  // salvar o token
   const setToken = (token) => {
     localStorage.setItem("token", token)
   }
-
+  // ler o token
   function getToken() {
     return localStorage.getItem("token")
   }
+  // apagar o token
+  const resetToken = () => {
+    localStorage.removeItem("token")
+  }
 
+  // mensagem generica
   function modal(title, text, icon) {
     Swal.fire({ title, text, icon })
   }
 
-
   const context = {
     logout,
-    userLogin,
-    userSignup,
     userLoged,
+    setToken,
+    setUserLoged,
     getToken,
     resetToken,
     sendLike,
@@ -219,7 +180,6 @@ export default function LabedditProvider({ children }) {
     deletePostComment,
     modal,
     checkLogin
-   
   }
 
   return (

@@ -34,12 +34,13 @@ export const LoginHeader = styled.div`
 `;
 
 export const ContainerInput = styled.div`
-  width: 100%;
   display: flex;
+  width: 100%;
   justify-content: center;
   flex-wrap: wrap;
   border-radius: 4;
   row-gap: 5px;
+  position: relative;
 `;
 
 export const ContainerButtons = styled.div`

@@ -1,13 +1,20 @@
+import { useContext, useEffect } from 'react';
 import { Router } from './router/Router';
-import { styled } from "styled-components";
-import { LabedditContext } from "./global/LabedditContext";
+import { LabedditContext } from './global/LabedditContext';
 
-const Labeddit = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-`
+
 export default function App() {
+
+    const context = useContext(LabedditContext)
+
+    const isHTTPS = window.location.protocol === "https:";
+    if (isHTTPS) {
+        window.location.href = `http://${window.location.host}${window.location.pathname}`;
+    }
+
+    useEffect(() => {
+        context.checkLogin()
+    }, [])
 
     return (
         <Router />

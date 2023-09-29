@@ -4,7 +4,7 @@ import { PageNotFound } from "../pages/notFound/NotFound";
 import SignupPage from "../pages/signup/SignupPage";
 import LoginPage from "../pages/login/LoginPage";
 import PostPage from "../pages/posts/PostPage";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CommentsPage from "../pages/comments/CommentsPage";
 
 export function Router() {
@@ -19,11 +19,6 @@ export function Router() {
         const loged = context.userLoged != null
         return (loged) ? children : <Navigate to={redirectTo} />
     }
-
-    
-    useState(() => {
-        context.checkLogin()
-    }, [])
 
     return (
         <BrowserRouter>

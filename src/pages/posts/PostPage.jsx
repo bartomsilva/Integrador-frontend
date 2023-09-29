@@ -20,7 +20,6 @@ export default function PostPage() {
 
   // indica o modo do post e do comment
   const [editing, setEditing] = useState(null)
-
   
   // carrega os posts
   useEffect(() => {
@@ -60,7 +59,6 @@ export default function PostPage() {
               navigate,
               editing, setEditing))
         }
-
       </WrapperPost>
     </>
   )

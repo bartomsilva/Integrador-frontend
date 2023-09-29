@@ -100,7 +100,6 @@ export const ContainerButtons = styled.div`
 `;
 
 export const Line = styled.div`
-  /* width: 363.0055158939032px; */
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
@@ -150,13 +149,9 @@ export const Button = styled.button`
     background: linear-gradient(90deg, #F9B24E 0%,  #FF6489 100%);
     color: rgba(0,0,0,0.6);
   }
-
  `;
 
 
-export const ButtonToogleEye = styled.button`
-  width: 20px;
-  position: relative;
-`
+
 
 
