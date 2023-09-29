@@ -18,10 +18,7 @@ O Labeddit Frontend é uma página que faz parte do projeto final Integrador, pr
 	
 ## Descrição:
 <center>
-Esta API foi construída utilizando a arquitetura em camadas, aplicando os conceitos de Programação Orientada a Objetos e foi dividida em três camadas: (Controller, Business e Database),
-utilizando o Nodejs com typescricpt além das biblíotecas: JWT (geração de tokens de acesso), UUII (criar os id´s), BCRYPT (criptografia de senhas), DOTENV (trabalhar
-com variáveis de ambiente), ZOD (validação de dados) e o KNEX (tratamento do banco de dados), o banco de dados utilizado foi o Sqlite.
-</center>
+Esta página foi construída utilizando o React com vite, está dividida 
 
 #### Camadas: 
 - **Controller:** trata das requisições vinda dos clientes, aqui é feita a primeira validação utilizando o ZOD.
