@@ -16,10 +16,11 @@ export default function LoginPage() {
   const navigate = useNavigate()
   const [eyePassword, setEyePassword] = useState()
   const [form, onChange, resetForm] = useForm({ email: "", password: "" })
+  const [login, setLogin] = useState(false)
 
   const sendFormLogin = async (e) => {
     e.preventDefault()
-    // await context.userLogin(form)
+    setLogin(!login)
     await userLogin(form)
     const response = context.getToken()
     resetForm()
@@ -66,7 +67,7 @@ export default function LoginPage() {
         </s.ContainerInput>
 
         <s.ContainerButtons>
-          <s.Button>Continuar</s.Button>
+          <s.Button>{!login ? 'Continuar': 'Por favor aguarde...'}</s.Button>
           <s.Line></s.Line>
           <s.Button onClick={() => handleSingUp(navigate)}>Crie uma conta!</s.Button>
         </s.ContainerButtons>

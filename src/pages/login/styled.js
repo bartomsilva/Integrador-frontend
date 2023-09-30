@@ -4,7 +4,6 @@ export const WrapperLogin = styled.form`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
-  /* width: 428px; */
   padding: 20px;
   min-height: 100vh;
 `;
@@ -52,7 +51,6 @@ export const ContainerButtons = styled.div`
 `;
 
 export const Line  = styled.div`
-  /* width: 363.0055158939032px; */
   width: 100%;
 
   height: 2px;
@@ -68,6 +66,7 @@ export const Input = styled.input`
   text-align: center;
   border-color: rgba(0,0,0,0.2);
   border-radius: 4px;
+  font-size: 18px;
   transition: 0.3s ease;  
   &:focus {
     border-width: 2.8px;

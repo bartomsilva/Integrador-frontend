@@ -56,16 +56,21 @@ export const ContainerButtonComment = styled(ContainerButtonLiked)`
   width: fit-content;
   padding-left: 20px;
   padding-right: 20px;
+  gap: 3px;
   border-radius: 28px;   
-  ${({ $noborder }) => $noborder=="yes" &&
+  ${({ $noborder }) => $noborder == "yes" &&
     `
     border-color: transparent;
     `} 
 `;
 
+export const ContainerButtonEdit = styled(ContainerButtonComment)`
+  gap: 30px;
+`;
+
 export const ButtonLike = styled.button`
-  width: 19.72px;
-  height: 19.72px;
+  width: 21.72px;
+  height: 21.72px;
   border: none;
   background-color: transparent;
   background-image: url(/image/like.svg);
@@ -91,8 +96,8 @@ export const ButtonDislike = styled(ButtonLike)`
 `;
 
 export const ButtonComment = styled.button`
-  width: 19.72px;
-  height: 19.72px;
+  width: 20.72px;
+  height: 20.72px;
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -101,11 +106,12 @@ export const ButtonComment = styled.button`
   &:hover{
     cursor: pointer;
   }  
+
 `;
 
 export const ButtonEditPostComment = styled.button`
-  width: 15.72px;
-  height: 15.72px;
+  width: 17.72px;
+  height: 17.72px;
   border: none;
   background-color: transparent;
   background-image: url(/image/edit.svg);

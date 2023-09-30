@@ -3,20 +3,19 @@ import { styled } from "styled-components";
 export const ContainerEyePassword=styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-itens: center;
   position: relative;
   top: -50px;
-  right: -47%;
+  right: -46%;
 `;
 
 export const ButtonToogleEye = styled.div`
-  display: block;
+  /* display: block; */
   padding: 5px;
-  min-width: 26px; 
-  min-height: 26px;
-  margin: 1px 0px;
+  min-width: 28px; 
+  min-height: 28px;
   border: 1px solid rgba(0,0,0,0.2);
-  border-radius: 4px;
+  border-radius: 100%;
   transition: 0.3s ease;
   ${({ $eye }) => $eye &&
     `
@@ -26,6 +25,7 @@ export const ButtonToogleEye = styled.div`
     `
     background-image: url(/image/eye_on.svg);
     `} 
+  background-size: contain;
   background-repeat: no-repeat;
   &:focus {
     border-width: 1.8px;

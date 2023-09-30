@@ -1,13 +1,6 @@
 import { handlePostComment, infoLikes, updateLocalStatusLike } from "../../../pages/posts/PostPage"
 import { handleComments } from "../../../router/cordinator"
-import {
-  ButtonCancel,
-  ButtonComment, ButtonConfirm, ButtonDeletePostComment,
-  ButtonDislike, ButtonEditPostComment, ButtonLike,
-  ContainerButtonComment, ContainerButtonLiked,
-  ContainerMessage, ContainerUser, MessageContent, MessageStatus,
-  Score, TextArea, TextUserCreator
-} from "./styled"
+import * as s  from "./styled"
 
 // renderiza CARD contendo texto do POST
 export default function CardMessagePosts(post, context, posts, setPosts, navigate, editing, setEditing) {
@@ -15,24 +8,24 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
   const { deletePostComment, reload, setReload } = context
 
   return (
-    <ContainerMessage key={post.id}>
-      <ContainerUser>
-        <TextUserCreator>
+    <s.ContainerMessage key={post.id}>
+      <s.ContainerUser>
+        <s.TextUserCreator>
           Enviado por: {post.creator.name}
-        </TextUserCreator>
+        </s.TextUserCreator>
 
         {
           !editing  // não está em modo de edição 
           && post.creator.id == context.userLoged.userId // criador do posts
           && window.location.href.includes("posts") // estando na janela de posts
           && ( // exite os botões EDITAR e DELETAR
-            <ContainerButtonComment>
-              <ButtonEditPostComment
+            <s.ContainerButtonEdit>
+              <s.ButtonEditPostComment
                 onClick={() => { setEditing(post) }} />
-              <ButtonDeletePostComment
+              <s.ButtonDeletePostComment
                 onClick={() => { deletePostComment({ postId: post.id, action: "posts" }) }}
               />
-            </ContainerButtonComment>
+            </s.ContainerButtonEdit>
           )
         }
         {
@@ -40,8 +33,8 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
           && post.creator.id == context.userLoged.userId // criador do post
           && post.id == editing.id // post em edição
           && ( // exibe os botões CONFIRMAR e CANCELAR
-            <ContainerButtonComment>
-              <ButtonConfirm  // BTN CONFIRMAR
+            <s.ContainerButtonEdit>
+              <s.ButtonConfirm  // BTN CONFIRMAR
                 onClick={() => {
                   context.editPostComment(
                     {
@@ -53,36 +46,36 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
                   setEditing(null)
                 }}
               />
-              <ButtonCancel // BTN CANCELAR
+              <s.ButtonCancel // BTN CANCELAR
                 onClick={
                   () => { setEditing(null) }}
               />
-            </ContainerButtonComment>
+            </s.ContainerButtonEdit>
           )
         }
-      </ContainerUser>
-      <MessageContent>
+      </s.ContainerUser>
+      <s.MessageContent>
         {
           // edita post - EDITANDO O POST
           editing && post.id == editing.id
             ? (
-              <TextArea
+              <s.TextArea
                 id="content"
                 name="content"
                 value={editing.content}
                 onChange={(e) => handlePostComment(e.target.value, setEditing)}
                 min="1"
                 required>
-              </TextArea>
+              </s.TextArea>
             )
             : ( // exibe conteúdo do POST
               <>{post.content}</>
             )
         }
-      </MessageContent>
-      <MessageStatus>
-        <ContainerButtonLiked>
-          <ButtonLike
+      </s.MessageContent>
+      <s.MessageStatus>
+        <s.ContainerButtonLiked>
+          <s.ButtonLike
             onClick={async () => {
               const result = await context.sendLike(post.id, "posts", true)
               if (result) {
@@ -94,9 +87,9 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
           />
 
           {/* <Score>{post?.likes} = {post?.dislikes}</Score> */}
-          <Score onMouseOver={() => infoLikes(post)}>{post?.likes - post?.dislikes}</Score>
+          <s.Score onMouseOver={() => infoLikes(post)}>{post?.likes - post?.dislikes}</s.Score>
 
-          <ButtonDislike
+          <s.ButtonDislike
             onClick={async () => {
               const result=await context.sendLike(post.id, "posts", false)
               if (result) {
@@ -106,20 +99,20 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
             // aplicar a cor no botão
             $applyfilter={post.liked === "dislike" ? "true" : null}
           />
-        </ContainerButtonLiked>
+        </s.ContainerButtonLiked>
 
-        <ContainerButtonComment>
-          <ButtonComment
+        <s.ContainerButtonComment>
+          <s.ButtonComment
             onClick={() => {
               const postSelected = [post]
               context.setPostSelect(postSelected)
               handleComments(navigate)
             }}
           />
-          <Score>{post.comments > 0 ? post.comments : 0}</Score>
-        </ContainerButtonComment>
-      </MessageStatus>
-    </ContainerMessage >
+          <s.Score>{post.comments > 0 ? post.comments : 0}</s.Score>
+        </s.ContainerButtonComment>
+      </s.MessageStatus>
+    </s.ContainerMessage >
   )
 }
 

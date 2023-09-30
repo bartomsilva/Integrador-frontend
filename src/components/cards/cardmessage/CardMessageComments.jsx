@@ -4,7 +4,7 @@ import {
   ButtonConfirm,
   ButtonDeletePostComment,
   ButtonDislike, ButtonEditPostComment, ButtonLike,
-  ContainerButtonComment, ContainerButtonLiked,
+  ContainerButtonComment, ContainerButtonEdit, ContainerButtonLiked,
   ContainerMessage, ContainerUser, MessageContent, MessageStatus,
   Score, TextArea, TextUserCreator
 } from "./styled"
@@ -25,7 +25,7 @@ export default function CardMessageComments(
           && comment.creator.id == context.userLoged.userId // criador do posts
           && window.location.href.includes("comments") // estando na janela de posts
           && (
-            <ContainerButtonComment>
+            <ContainerButtonEdit>
               <ButtonEditPostComment
                 onClick={() => { setEditing(comment) }}
               />
@@ -37,7 +37,7 @@ export default function CardMessageComments(
                   setEditing(null)
                 }}
               />
-            </ContainerButtonComment>
+            </ContainerButtonEdit>
           )
         }
         { // BOTÃO CONFIRMAR E CANCELAR

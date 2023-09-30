@@ -112,6 +112,7 @@ export const Input = styled.input`
   margin: 1px 0px;
   padding-inline: 5px;
   text-align: center;
+  font-size: 18px;
   border-color: rgba(0,0,0,0.2);
   border-radius: 4px;
   transition: 0.3s ease;

@@ -15,6 +15,7 @@ export default function SignupPage() {
   const context = useContext(LabedditContext)
   const navigate = useNavigate()
   const [eyePassword, setEyePassword] = useState()
+  const [login, setLogin] = useState(false)
 
   const [form, onChange, resetForm] =
     useForm({
@@ -37,9 +38,11 @@ export default function SignupPage() {
       newsLetter: form.newsLetter
     }
     await userSignup(newUser)
+    setLogin(!login)
     if (context.getToken()) {
       handlePosts(navigate)
     }
+
     // }
   }
 
@@ -121,7 +124,7 @@ export default function SignupPage() {
 
         </s.ContainerTerms>
         <s.ContainerButtons>
-          <s.Button>Cadastrar</s.Button>
+          <s.Button>{!login ? 'Cadastrar': 'Por favor aguarde...'}</s.Button>
         </s.ContainerButtons>
       </s.WrapperSingup>
     </s.MainContainer>
