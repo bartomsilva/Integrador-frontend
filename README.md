@@ -18,12 +18,12 @@ O Labeddit Frontend é uma página que faz parte do projeto final Integrador, pr
 	
 ## Descrição:
 <center>
-Esta página foi construída utilizando o React com vite, está dividida 
+Construí esta página utilizando o React com vite, aplique neste projeto  
 
 #### Camadas: 
-- **Controller:** trata das requisições vinda dos clientes, aqui é feita a primeira validação utilizando o ZOD.
-- **Business:** toda regra de negócio vai aqui, essa camada também e responsável por modelar os dados a rerem salvos ou retornados.
-- **Database:** trata da leitura e armazenameto dos dados.
+- **Controller:** Trata das requisições vinda dos clientes, aqui é feita a primeira validação utilizando o ZOD.
+- **Business:** Toda regra de negócio vai aqui, essa camada também e responsável por modelar os dados a rerem salvos ou retornados.
+- **Database:** Trata da leitura e armazenameto dos dados.
 
 <hr/>
 <span id="requests"></span>
