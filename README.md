@@ -17,7 +17,7 @@ O Labeddit Frontend é uma página que faz parte do projeto final Integrador, pr
 	
 ## Descrição:
 <center>
-Construí esta página utilizando o React com vite, apliquei neste projeto o contexto global para facilitar o acesso de recursos. Direcionei o acesso as páginas através de rotas, sendo que as páginas de posts e comentários são tratadas por meio de rotas protegidas, que só são liberadas após efetuar o login ou cadastro, também adicionei ao projeto a possibilidade do usuário poder editar e excluir posts e comentários, e por fim, existindo localmente um token válido, o sistema executa um auto-login passando direto para página de posts, (ver Check login na documentação do back-end).   
+Construí esta página utilizando o React com vite, apliquei neste projeto o contexto global para facilitar o acesso de recursos. Direcionei o acesso as páginas através de rotas, sendo que as páginas de posts e comentários são tratadas por meio de rotas protegidas, que só são liberadas após efetuar o login ou cadastro, também adicionei ao projeto a possibilidade do usuário poder editar e excluir posts e comentários, e por fim, existindo localmente um token válido, o sistema executa um auto-login passando direto para página de posts, (ver Check login na documentação do back-end).</center>   
 
 <hr/>
 <span id="telas"></span>
