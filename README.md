@@ -18,32 +18,23 @@ O Labeddit Frontend é uma página que faz parte do projeto final Integrador, pr
 	
 ## Descrição:
 <center>
-Construí esta página utilizando o React com vite, aplique neste projeto  
-
-#### Camadas: 
-- **Controller:** Trata das requisições vinda dos clientes, aqui é feita a primeira validação utilizando o ZOD.
-- **Business:** Toda regra de negócio vai aqui, essa camada também e responsável por modelar os dados a rerem salvos ou retornados.
-- **Database:** Trata da leitura e armazenameto dos dados.
+Construí esta página utilizando o React com vite, apliquei neste projeto o contexto global para facilitar o acesso de recursos. Direcionei o acesso as páginas através de rotas, sendo que as páginas de posts e comentários são tratadas por meio de rotas protegidas, que só são liberadas após averificação da autenticidade do token (ver Check login na documentação do back-end), também adicionei o projeto a possibilidade de editar e excluir posts e comentários.   
 
 <hr/>
-<span id="requests"></span>
+<span id="telas"></span>
 <a href="#indice">:arrow_backward:Indíce</a>
 
-## Requisições (Paths): 
-#### Requisições de Usuários
-- /users
+## Imagens
+#### Pagina de login
+
+#### Pagina de Signup
+
+
+#### Página de Posts
+
   
-  endpoints: login / signup
-#### Requisições de Posts
-- /posts
-  
-  endpoints: create post / get posts / edit post / delete post
-#### Requisições de Comentários
-- /comments
-  
-  endpoints: create comment / get comments by post / edit comment / delete comment
-#### Requisições de Likes
-- /likes
+#### Página de comentários
+
   
   endopoint: like (faz o like e dislike juntos)
 
