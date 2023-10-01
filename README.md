@@ -1,5 +1,5 @@
 <h1 align="left" margin-top="0">Labeddit Frontend</h1> 
-O Labeddit é uma página que faz parte do projeto final Integrador, projeto de cunho acadêmico, que trata de uma rede social: tem as funcionalidades de login, cadastro de novos usuários, incluir, editar, excluir e curtir posts, além de permitir comentar os posts. 
+Labeddit é uma página que faz parte do projeto final Integrador, projeto de cunho acadêmico, que trata de uma rede social: tem as funcionalidades de login, cadastro de novos usuários, incluir, editar, excluir e curtir posts, além de permitir comentar os posts. 
 
 <span id='indice'></span>
 ## Índice:
