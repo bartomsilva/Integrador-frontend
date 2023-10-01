@@ -25,10 +25,10 @@ Construí esta página utilizando o React com vite, apliquei neste projeto o con
 
 ## Imagens
 
-#### Pagina de login
+#### Página de login
 <img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/db0a430f-57f8-434e-8fe0-e0c3c333e4f7" width="220px">
 
-#### Pagina de Signup
+#### Página de Signup
 <img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/58a336f8-b449-4cf3-b981-f96e3143b84a" width="220px">
 
 #### Página de Posts
