@@ -8,7 +8,7 @@ Labeddit é uma página que faz parte do projeto final Integrador, projeto de cu
 - <a href="#telas">Imagens das Páginas</a>
 - <a href="#comorodar">Como rodar este projeto localmente</a>
 - <a href="#tecnologias">Tecnologias e Libs utilizadas</a>
-- <a href="#link">Repositório do Back-end</a>
+- <a href="#linkback">Repositório do Back-end</a>
 - <a href="#author">Pessoas autoras</a>
 <hr/>
 
@@ -86,7 +86,7 @@ yarn dev
 </div>
 <hr/>
 
-<span id="link"></span>
+<span id="linkback"></span>
 
 ## Links Back-end: 
 
