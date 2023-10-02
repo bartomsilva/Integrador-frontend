@@ -81,8 +81,8 @@ yarn dev
 ## 💻 Tecnologias:
 <div align="center">
 
-<img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/4ab6a397-8933-4ef4-b08e-3e7bd38bc3e7" height="55px"/>
-<img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/06d9c178-5dc4-43a1-b739-32fd2d1547d6" height="55px"/>
+<img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/4ab6a397-8933-4ef4-b08e-3e7bd38bc3e7" height="65px"/>
+<img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/06d9c178-5dc4-43a1-b739-32fd2d1547d6" height="65px"/>
 
 </div>
 <hr/>
