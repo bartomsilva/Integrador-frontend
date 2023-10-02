@@ -9,6 +9,7 @@ Labeddit é uma página que faz parte do projeto final Integrador, projeto de cu
 - <a href="#comorodar">Como rodar este projeto localmente</a>
 - <a href="#tecnologias">Tecnologias e Libs utilizadas</a>
 - <a href="#linkback">Repositório do Back-end</a>
+- <a href="#linkpage">Acessar página</a>
 - <a href="#author">Pessoas autoras</a>
 <hr/>
 
@@ -45,7 +46,7 @@ Construí esta página utilizando o React com vite, apliquei neste projeto o con
 
 <p>Caso queira baixar e instalar este projeto em seu computador, é necessário que tenha o git instalado.</p>
 
-### Link:  
+### Git:  
 <a href="https://git-scm.com/">Git</a>
 
 <p>Se já tem instalado ou após instalar, siga os passos abaixo:</p>
