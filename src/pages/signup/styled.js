@@ -104,7 +104,6 @@ export const Line = styled.div`
   height: 2px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
 `;
-
 export const Input = styled.input`
   display: block;
   width: 100%; 

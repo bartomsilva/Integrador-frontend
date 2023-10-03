@@ -8,7 +8,6 @@ import { useContext } from "react";
 import CommentsPage from "../pages/comments/CommentsPage";
 
 export function Router() {
-
     const context = useContext(LabedditContext)
 
     function RedirectLogin({ children, redirectTo }) {

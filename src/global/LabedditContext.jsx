@@ -164,7 +164,6 @@ export default function LabedditProvider({ children }) {
   function modal(title, text, icon) {
     Swal.fire({ title, text, icon })
   }
-
   const context = {
     logout,
     userLoged,

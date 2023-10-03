@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-
 export const WrapperComments = styled.div`
   display: flex;
   flex-direction: column; 

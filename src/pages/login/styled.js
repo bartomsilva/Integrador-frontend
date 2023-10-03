@@ -80,10 +80,8 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   display: block;
-  
   /* width: 365px; */
   width: 100%;
-
   height: 51px;
   padding: 13px, 133px, 13px, 133px;
   border-radius: 27px;

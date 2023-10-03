@@ -10,7 +10,6 @@ export const ContainerEyePassword=styled.div`
 `;
 
 export const ButtonToogleEye = styled.div`
-  /* display: block; */
   padding: 5px;
   min-width: 28px; 
   min-height: 28px;

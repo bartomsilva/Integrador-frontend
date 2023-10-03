@@ -46,7 +46,6 @@ export default function SignupPage() {
     }
     // }
   }
-
   return (
     <s.MainContainer onSubmit={sendFormSingUp}>
       <Header />

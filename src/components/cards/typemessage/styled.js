@@ -54,7 +54,6 @@ export const TextArea = styled.textarea`
 `;
 
 export const Line  = styled.div`
-  /* width: 363.0055158939032px; */
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);

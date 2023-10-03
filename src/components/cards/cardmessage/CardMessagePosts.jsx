@@ -87,10 +87,8 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
             // aplicar cor no bõtão
             $applyfilter={post.liked === "like" ? "true" : null}
           />
-
           {/* <Score>{post?.likes} = {post?.dislikes}</Score> */}
           <s.Score onMouseOver={() => infoLikes(post)}>{post?.likes - post?.dislikes}</s.Score>
-
           <s.ButtonDislike
             onClick={async () => {
               const result=await context.sendLike(post.id, "posts", false)

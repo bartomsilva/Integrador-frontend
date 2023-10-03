@@ -11,7 +11,6 @@ export default function Header() {
   const context = useContext(LabedditContext)
   const { logout, userLoged } = context
   const GO_BACK = -1
-
   const navigate = useNavigate()
 
   return (
