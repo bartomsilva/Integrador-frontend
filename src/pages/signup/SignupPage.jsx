@@ -37,12 +37,12 @@ export default function SignupPage() {
       password: form.password,
       newsLetter: form.newsLetter
     }
+    setLogin(true)
     await userSignup(newUser)
-    setLogin(!login)
     if (context.getToken()) {
       handlePosts(navigate)
     } else {
-      setLogin(!login)
+      setLogin(false)
     }
     // }
   }

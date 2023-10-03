@@ -17,16 +17,17 @@ export default function LoginPage() {
   const [eyePassword, setEyePassword] = useState()
   const [form, onChange, resetForm] = useForm({ email: "", password: "" })
   const [login, setLogin] = useState(false)
+
   const sendFormLogin = async (e) => {
     e.preventDefault()
-    setLogin(!login)
+    setLogin(true)
     await userLogin(form)
     const response = context.getToken()
-    resetForm()
     if (response) {
+      resetForm()
       handlePosts(navigate)
     } else {
-      setLogin(!login)
+      setLogin(false)
     }
   }
   return (
