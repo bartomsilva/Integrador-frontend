@@ -11,11 +11,10 @@ export const Container = styled.main`
     font-family: Arial, Helvetica, sans-serif;
     font-size: 400%;        
   }
-
+  
   h2{
     font-size: 200%;   
     margin-bottom: 150px;
-
   }
   img{ 
     width: 30%;

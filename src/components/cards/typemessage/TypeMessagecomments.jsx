@@ -24,7 +24,6 @@ export default function TypeMessageComments() {
 		newPostSelect[0].comments = updatedComments;
 		context.setPostSelect(newPostSelect);
 	}
-
 	return (
 
 		<WrapperMessage onSubmit={sendFormAction}>

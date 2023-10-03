@@ -11,9 +11,7 @@ import {
 
 export default function CardMessageComments(
   comment, context, comments, setComments, editing, setEditing, post) {
-
   const { deletePostComment } = context
-
   return (
     <ContainerMessage key={comment.id}>
       <ContainerUser>

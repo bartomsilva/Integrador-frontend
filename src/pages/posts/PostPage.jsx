@@ -86,7 +86,6 @@ export const updateLocalStatusLike = (post, action, posts, setPosts) => {
 
   if (!postId) return
   let newLiked
-
   // sem atividade
   if (statusLiked == "no") {
     newLiked = action

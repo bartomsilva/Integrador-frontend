@@ -50,7 +50,6 @@ export const Button = styled.button`
     cursor: pointer;
   }
 `;
-
 export const ButtonClose = styled.button`
   display: block;
   width: 25px;

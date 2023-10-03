@@ -20,7 +20,6 @@ export default function TypeMessagePosts() {
   }
 
   return (
-
     <WrapperMessage onSubmit={sendFormAction}>
       <ContainerMessage>
         <TextArea

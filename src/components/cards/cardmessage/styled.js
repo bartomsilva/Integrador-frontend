@@ -36,8 +36,7 @@ export const MessageStatus = styled.div`
   max-width: 100%;
   min-height: fit-content;
   padding: 10px;
- 
-`;
+ `;
 
 export const ContainerButtonLiked = styled.div`
   display: flex;

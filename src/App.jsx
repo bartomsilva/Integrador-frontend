@@ -13,7 +13,6 @@ export default function App() {
         }
         context.checkLogin()
     }, [])
-
     return (
         <Router />
     )
