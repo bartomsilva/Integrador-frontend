@@ -26,6 +26,8 @@ export default function LoginPage() {
     resetForm()
     if (response) {
       handlePosts(navigate)
+    } else {
+      setLogin(!login)
     }
   }
 
@@ -67,7 +69,7 @@ export default function LoginPage() {
         </s.ContainerInput>
 
         <s.ContainerButtons>
-          <s.Button>{!login ? 'Continuar': 'Por favor aguarde...'}</s.Button>
+          <s.Button>{!login ? 'Continuar' : 'Por favor aguarde...'}</s.Button>
           <s.Line></s.Line>
           <s.Button onClick={() => handleSingUp(navigate)}>Crie uma conta!</s.Button>
         </s.ContainerButtons>
