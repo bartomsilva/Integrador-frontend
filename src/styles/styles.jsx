@@ -1,12 +1,15 @@
 import { styled } from "styled-components";
 
 export const ContainerEyePassword=styled.div`
-  display: flex;
-  justify-content: center;
-  align-itens: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-itens: center; */
   position: relative;
   top: -50px;
   right: -46%;
+  @media (max-width: 600px) {
+    right: -44%;
+  }
 `;
 
 export const ButtonToogleEye = styled.div`
