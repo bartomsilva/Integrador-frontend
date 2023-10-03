@@ -79,6 +79,8 @@ export default function CardMessagePosts(post, context, posts, setPosts, navigat
             onClick={async () => {
               const result = await context.sendLike(post.id, "posts", true)
               if (result) {
+
+                // context.setReload(!context.reload)
                 updateLocalStatusLike(post, "like", posts, setPosts)
               }
             }}

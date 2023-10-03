@@ -179,7 +179,9 @@ export default function LabedditProvider({ children }) {
     editPostComment,
     deletePostComment,
     modal,
-    checkLogin
+    checkLogin,
+    reload,
+    setReload
   }
 
   return (

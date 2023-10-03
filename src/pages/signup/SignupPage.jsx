@@ -41,8 +41,9 @@ export default function SignupPage() {
     setLogin(!login)
     if (context.getToken()) {
       handlePosts(navigate)
+    } else {
+      setLogin(!login)
     }
-
     // }
   }
 

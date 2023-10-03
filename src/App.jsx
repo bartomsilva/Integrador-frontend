@@ -2,7 +2,6 @@ import { useContext, useEffect } from 'react';
 import { Router } from './router/Router';
 import { LabedditContext } from './global/LabedditContext';
 
-
 export default function App() {
 
     const context = useContext(LabedditContext)
