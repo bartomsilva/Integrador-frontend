@@ -43,7 +43,7 @@ export default function CardMessageComments(
           && comment.creator.id == context.userLoged.userId // criador do post
           && comment.id == editing.id // post em edição
           && ( // exibe os botões CONFIRMAR e CANCELAR
-            <ContainerButtonComment>
+            <ContainerButtonEdit>
               <ButtonConfirm  // BTN CONFIRMAR
                 onClick={() => {
                   context.editPostComment(
@@ -60,7 +60,7 @@ export default function CardMessageComments(
                 onClick={
                   () => { setEditing(null) }}
               />
-            </ContainerButtonComment>
+            </ContainerButtonEdit>
           )
         }
       </ContainerUser>

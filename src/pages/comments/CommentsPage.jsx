@@ -25,7 +25,8 @@ export default function CommentsPage() {
   // carrega os comentários
   useEffect(() => {
     getComments();
-  }, [context]);
+  }, []);
+  // }, [context]);
   // }, [editing, comments, context]);
   const getComments = async () => {
     const token = context.getToken()
