@@ -63,7 +63,11 @@ export const ContainerButtonComment = styled(ContainerButtonLiked)`
     `} 
 `;
 
-export const ContainerButtonEdit = styled(ContainerButtonComment)`
+export const ContainerButtonEdit = styled(ContainerButtonLiked)`
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 28px;   
   gap: 30px;
 `;
 
