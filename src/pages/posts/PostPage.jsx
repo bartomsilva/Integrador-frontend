@@ -24,7 +24,8 @@ export default function PostPage() {
   // carrega os posts
   useEffect(() => {
     getPosts();
-  }, [context]);
+  // }, [context]);
+  }, []);
 
   const getPosts = async () => {
     const token = context.getToken() || "not-loged"
@@ -44,6 +45,7 @@ export default function PostPage() {
     }
   };
 
+  
   return (
     <>
       <Header />
