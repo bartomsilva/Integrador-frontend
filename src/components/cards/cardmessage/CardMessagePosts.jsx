@@ -4,8 +4,7 @@ import * as s  from "./styled"
 
 // renderiza CARD contendo texto do POST
 export default function CardMessagePosts(post, context, posts, setPosts, navigate, editing, setEditing) {
-
-  const { deletePostComment, reload, setReload } = context
+  const { deletePostComment, reload, setReload,isPageOpen } = context
 
   return (
     <s.ContainerMessage key={post.id}>

@@ -80,14 +80,19 @@ export const ButtonLike = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   padding: 5px 5px;
+  overflow: hidden;
 
   &:hover{
     cursor: pointer;
   }
+
+ 
   ${({ $applyfilter }) => $applyfilter &&
-    `
+    `    
       filter: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
     `} 
+
+ 
 `;
 
 export const ButtonDislike = styled(ButtonLike)`

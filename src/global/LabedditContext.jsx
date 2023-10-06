@@ -15,7 +15,6 @@ export default function LabedditProvider({ children }) {
   // reload - refaz avisa sobre alteração nas tabelas
   const [reload, setReload] = useState(false)
 
-
   // CREATE POST / COMMENT
   const sendPost = async (input, action) => {
     const token = getToken();
@@ -180,7 +179,7 @@ export default function LabedditProvider({ children }) {
     modal,
     checkLogin,
     reload,
-    setReload
+    setReload 
   }
 
   return (
