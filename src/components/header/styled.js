@@ -1,14 +1,13 @@
 import { styled } from "styled-components";
 
 export const WrapperHeader = styled.header`
-  max-width: 1200px;
   display: flex;
   height: 50px;
   justify-content: space-between;
   align-items: center;
   background-color: #EDEDED;
   div {   
-    width: 33.33%;  }  
+    width: 33.333%;  }  
 `;
 
 export const ContainerUser = styled.div`

@@ -44,12 +44,11 @@ export default function PostPage() {
       setIsLoading(false)
     }
   };
-
   
   return (
     <>
       <Header />
-      <WrapperPost>
+      <WrapperPost>        
         <TypeMessagePosts />
         {
           isLoading ? <img src="/image/loading.gif"></img> :

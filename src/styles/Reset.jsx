@@ -7,18 +7,30 @@ const Reset = createGlobalStyle`
 		padding: 0;
 		box-sizing: border-box;
 	};
+
     :root {
-    --color-liked: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
-    --color-noliked: none;
-    max-width: 800px;
-    min-width: 320px;
-    background-color: #ffffff;
-    margin: 0 auto;
-    background-color: rgba(0,0,0,.7);        
-  }
+        --color-liked: invert(56%) sepia(75%) saturate(2848%) hue-rotate(358deg) brightness(99%) contrast(89%);
+        --color-noliked: none;
+        max-width: 600px;
+        min-width: 320px;
+        margin: 0 auto;
+        background-color: rgba(0,0,0,.7)
+    }
+
     body {        
         line-height: 1;
-        background-color: #ffff;
+        background-color: #ffff;  
+    
+    }
+
+    body::-webkit-scrollbar {
+       width: 0px; /* Largura da barra de rolagem */
+    }
+    body::-webkit-scrollbar-thumb {
+        background-color: transparent; /* Cor da barra de rolagem */
+    }
+    body::-webkit-scrollbar-track {
+        background-color: transparent; /* Cor da trilha da barra de rolagem */
     }
 	   
 	textarea:focus, input:focus {
@@ -120,6 +132,7 @@ const Reset = createGlobalStyle`
         font-size: 100%;
         /* font: inherit; Olhar como este reset não afetar a fonte global */
         vertical-align: baseline;
+        text-decoration: none;
     }
 
     /* HTML5 display-role reset for older browsers */

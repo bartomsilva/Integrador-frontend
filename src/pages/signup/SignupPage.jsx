@@ -14,8 +14,15 @@ export default function SignupPage() {
 
   const context = useContext(LabedditContext)
   const navigate = useNavigate()
+  
+  // status da exibição do password
   const [eyePassword, setEyePassword] = useState()
+  
+  // usuário logado
   const [login, setLogin] = useState(false)
+  
+  // checa o status do checkbox
+  const [isLetter, setIsLetter] = useState(false)
 
   const [form, onChange, resetForm] =
     useForm({
@@ -35,8 +42,9 @@ export default function SignupPage() {
       name: form.name,
       email: form.email,
       password: form.password,
-      newsLetter: form.newsLetter
+      newsLetter: isLetter?"*":""
     }
+    console.log(form.newsLetter)
     setLogin(true)
     await userSignup(newUser)
     if (context.getToken()) {
@@ -112,7 +120,7 @@ export default function SignupPage() {
           </s.AlertTerms>
 
           <s.AcceptTerms>
-            <input
+            <input onClick={()=>setIsLetter(!isLetter)}
               type="checkbox"
               id="newsLetter"
               name="newsLetter"

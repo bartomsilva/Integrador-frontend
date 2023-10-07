@@ -112,5 +112,29 @@ export const Button = styled.button`
   }  
  `;
 
+export const ContainerBadPassword  = styled.div`
+display: flex;
+width: 100% ;
+position: relative;
+top: -30px;
+justify-content: flex-end;
+
+`;
+export const BadPassword  = styled.a`
+  color: #373737;
+  font-size: 19px;
+  transition: color 0.3s ease; /* Transição suave de cor em 0,3 segundos com easing (suavização) */
+
+  &:hover {
+    color: #fe7e02;
+  }   
+
+  &:active {
+    color: inherit;
+  }   
+`;
+
+
+
 
 

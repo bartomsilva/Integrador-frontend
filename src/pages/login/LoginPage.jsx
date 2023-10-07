@@ -8,7 +8,6 @@ import { ButtonToogleEye, ContainerEyePassword } from "../../styles/styles";
 import { BASE_URL } from "../../constants/constants";
 import axios from "axios";
 
-
 //----
 export default function LoginPage() {
 
@@ -65,6 +64,14 @@ export default function LoginPage() {
             </ButtonToogleEye>
           </ContainerEyePassword>
 
+          <s.ContainerBadPassword>
+            
+            <s.BadPassword href="#" onClick={() => resetPassword()}>
+              esqueceu a senha?
+            </s.BadPassword>
+
+          </s.ContainerBadPassword>
+
         </s.ContainerInput>
 
         <s.ContainerButtons>
@@ -84,7 +91,6 @@ export default function LoginPage() {
         context.setUserLoged(response.data.user)
       })
       .catch(error => {
-        console.log(error)
         if (error.response) {
           context.modal("Email ou senha inválida", "", "error")
         } else {
@@ -92,5 +98,23 @@ export default function LoginPage() {
         }
       })
   }
-
+  // RESETAR SENHA
+  async function resetPassword(){
+    const token = context.getToken()
+    if(!form.email){
+      context.modal("Informe o email","","error")
+    } else {
+      const PATH = BASE_URL + "/users/sendemail"
+      const input = {
+        email: form.email
+      }
+      await axios.post(PATH, input)
+        .then(response => {
+          context.modal("caso esse email exista,\n será enviado um link\n para efetivar o reset de sua senha!")
+        })
+        .catch(error => {
+          modal("Ops, ocorreu um erro!")          
+        })      
+    }
+  }
 }

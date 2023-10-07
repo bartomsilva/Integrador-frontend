@@ -4,12 +4,13 @@ export const MainContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`
+  height: 100%;
+`;
+
 export const WrapperSingup = styled.div`
   display: flex;
   flex-direction: column; 
   justify-content: space-around;
-
   min-height: 100vh;
   padding: 60px 32px;
 `;
