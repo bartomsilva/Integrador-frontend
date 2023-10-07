@@ -9,7 +9,7 @@ Labeddit é uma página que faz parte do projeto final Integrador, projeto de cu
 - <a href="#comorodar">Como rodar este projeto localmente</a>
 - <a href="#tecnologias">Tecnologias e Libs utilizadas</a>
 - <a href="https://github.com/bartomsilva/Integrador-backend">Repositório do Back-end</a>
-- <a href="https://labeddit-bart-silva.surge.sh/posts">Abrir a Página</a>
+- <a href="https://labeddit-bart-silva.surge.sh">Abrir a Página</a>
 - <a href="#author">Pessoas autoras</a>
 <hr/>
 
