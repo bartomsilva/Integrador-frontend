@@ -8,8 +8,8 @@ Labeddit é uma página que faz parte do projeto final Integrador, projeto de cu
 - <a href="#telas">Imagens das Páginas</a>
 - <a href="#comorodar">Como rodar este projeto localmente</a>
 - <a href="#tecnologias">Tecnologias e Libs utilizadas</a>
-- <a href="#linkback">Repositório do Back-end</a>
-- <a href="#linkpage">Acessar página</a>
+- <a href="https://github.com/bartomsilva/Integrador-backend">Repositório do Back-end</a>
+- <a href="https://labeddit-bart-silva.surge.sh">Abrir a Página</a>
 - <a href="#author">Pessoas autoras</a>
 <hr/>
 
@@ -86,21 +86,6 @@ yarn dev
 
 </div>
 <hr/>
-
-<span id="linkback"></span>
-
-## Links Back-end: 
-
-<a href="https://github.com/bartomsilva/Integrador-backend">link do repositório - Back-end<a/>
-
-
-<span id="linkpage"></span>
-
-## Links da Página: 
-
-<a href="http://18.204.122.118:3000/posts">Deploy (AWS)<a/><br>
-<a href="https://labeddit-bart-silva.surge.sh/posts">Deploy (surge)<a/>
-
 
 <span id="author"></span>
 
