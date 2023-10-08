@@ -66,6 +66,9 @@ npm install
 ou
 yarn install
 
+# Caso tenha Baixado o Backend
+Altere o BASE_URL no arquivo constants/constants.js
+
 # Executando o Projeto
 npm run dev
 ou 
