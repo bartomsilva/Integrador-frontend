@@ -2,10 +2,11 @@ import { styled } from "styled-components";
 
 export const WrapperHeader = styled.header`
   display: flex;
-  height: 50px;
+  height: 55px;
   justify-content: space-between;
   align-items: center;
   background-color: #EDEDED;
+  border: 1px solid rgba(0,0,0,.05);
   div {   
     width: 33.333%;  }  
 `;
@@ -21,21 +22,23 @@ export const ContainerUser = styled.div`
 `;
 
 export const HeaderLogo = styled.div`
-  width: 33.33%;
+  /* width: 33.33%; */
   display: flex;
   justify-content: center;
 `;
 
 export const ContainerButton = styled.div`
-  width: 33.33%;
+  /* width: 33.33%; */
   display: flex;
-  justify-content: right;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
   padding-right: 20px;
 `;
 
 export const Button = styled.button`
   width: 67px;
-  height: 35px;
+  height: 33px;
   border: none;
   background-color: transparent;
   padding: 5px;
