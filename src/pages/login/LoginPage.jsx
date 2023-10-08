@@ -109,12 +109,16 @@ export default function LoginPage() {
         email: form.email
       }
       await axios.post(PATH, input)
-        .then(response => {
-          context.modal("caso esse email exista,\n será enviado um link\n para efetivar o reset de sua senha!")
-        })
+        .then(response => {})
         .catch(error => {
-          modal("Ops, ocorreu um erro!")          
-        })      
+          // if(error.response.data){
+          //   context.modal(error.response.data.message)          
+          // } else {
+          //   context.modal("Ops, ocorreu um erro!")          
+          // }
+        }).finally(
+          context.modal("caso esse email exista,\n será enviado um link\n para efetivar o reset de sua senha!")
+        )      
     }
   }
 }
