@@ -1,5 +1,5 @@
 <h1 align="left" margin-top="0">Labeddit Frontend</h1> 
-Labeddit é uma página que faz parte do projeto final Integrador, projeto de cunho acadêmico, que trata de uma rede social: tem as funcionalidades de login, cadastro de novos usuários, incluir, editar, excluir e curtir posts, além de permitir comentar os posts. 
+Labeddit é uma página que faz parte do projeto final Integrador, projeto de cunho acadêmico, que trata de uma rede social: tem as funcionalidades de login, cadastro de novos usuários, incluir, editar, excluir e curtir posts, comentar os posts e trocar senha. 
 
 <span id='indice'></span>
 ## Índice:
@@ -18,7 +18,7 @@ Labeddit é uma página que faz parte do projeto final Integrador, projeto de cu
 	
 ## Descrição:
 <center>
-Construí esta página utilizando o React com vite, apliquei neste projeto o contexto global para facilitar o acesso de recursos. Direcionei o acesso as páginas através de rotas, sendo que as páginas de posts e comentários são tratadas por meio de rotas protegidas, que só são liberadas após efetuar o login ou cadastro, também adicionei ao projeto a possibilidade do usuário poder editar e excluir posts e comentários, e por fim, existindo localmente um token válido, o sistema executa um auto-login passando direto para página de posts, (ver Check login na documentação do back-end).</center>   
+Construí esta página utilizando o React com vite, apliquei neste projeto o contexto global para facilitar o acesso de recursos. Direcionei o acesso as páginas através de rotas, sendo que as páginas de posts e comentários são tratadas por meio de rotas protegidas, que só são liberadas após efetuar o login ou cadastro, adicionei ao projeto a possibilidade do usuário poder editar e excluir posts e comentários, também é possivel trocar sua senha através de um link enviado via email, e por fim, existindo localmente um token válido, o sistema executa um auto-login passando direto para página de posts, (ver Check login na documentação do back-end).</center>   
 
 <hr/>
 <span id="telas"></span>
@@ -27,7 +27,7 @@ Construí esta página utilizando o React com vite, apliquei neste projeto o con
 ## Imagens
 
 #### Página de login
-<img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/db0a430f-57f8-434e-8fe0-e0c3c333e4f7" width="220px">
+<img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/4c1f74ce-e376-47cd-aad2-74ecbb9548b1" width="220px">
 
 #### Página de Signup
 <img src="https://github.com/bartomsilva/Integrador-frontend/assets/106079184/58a336f8-b449-4cf3-b981-f96e3143b84a" width="220px">
