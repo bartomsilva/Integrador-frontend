@@ -27,6 +27,7 @@ export default function Header() {
       </HeaderLogo>
 
       <ContainerButton>
+        <p>{context.userLoged.userName}</p>
         {
           window.location.href.includes("singup") ?
             <Button onClick={() => navigate("/")}>Login</Button>
