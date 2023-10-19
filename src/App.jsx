@@ -11,7 +11,10 @@ export default function App() {
         if (isHTTPS) {
             window.location.href = `http://${window.location.host}${window.location.pathname}`;
         }
-        context.checkLogin()
+
+        (async ()=>{
+            await context.checkLogin()
+        })()
     }, [])
     
     return (
